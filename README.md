@@ -1,2 +1,2 @@
 # spellcraftingV2
-Implementation of a spellcrafting system for a schoolproject
+Implementation of a spellcrafting system for a school project
