@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Homebrew;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : LivingEntity
 {
-
-    //TODO: actually implement knockback and getting killed
+    //TODO: Add interaction with spellbook
 
     //Variables
     #region Movement
@@ -22,22 +22,39 @@ public class PlayerController : LivingEntity
 
     #region myComponents
     private CharacterController cc;
+    private KnockbackReceiver kbr;
     #endregion
 
-    //Methods
+    #region Settings
+    [SerializeField] private bool debugMode = false;
+    #endregion
 
+
+    //Methods
     private void Awake()
     {
         //Set up refrences
         cc = GetComponent<CharacterController>();
+        this.gameObject.AddComponent<KnockbackReceiver>();
+        kbr = GetComponent<KnockbackReceiver>();
     }
 
     private void Update()
     {
+        //Movement
         MovementController();
         RotationController();
-    }
 
+        //UI
+        HealthAndManaBarDisplay();
+
+        #region Debug
+        if (debugMode)
+        {
+            DebugControls();
+        }
+        #endregion
+    }
 
     #region Movement
     private void MovementController()
@@ -106,6 +123,36 @@ public class PlayerController : LivingEntity
     }
     #endregion
 
+    #region UI
+    private void HealthAndManaBarDisplay()
+    {
+        //Fast bars
+        InGameUIReferences.Instance.healthBarFastFill.fillAmount = (float)currentHealth / (float)currentMaxHealth;
+        InGameUIReferences.Instance.manaBarFastFill.fillAmount = (float)currentResourceAmount / (float)currentMaxResourceAmount;
+
+        //Slow bars
+
+        if (InGameUIReferences.Instance.healthBarSlowFill.fillAmount != (float)currentHealth / (float)currentMaxHealth) //Health
+        {
+            StartCoroutine(SlowFill(InGameUIReferences.Instance.healthBarSlowFill, (float)currentHealth / (float)currentMaxHealth));
+        }
+
+        if (InGameUIReferences.Instance.manaBarSlowFill.fillAmount != (float)currentResourceAmount / (float)currentMaxResourceAmount) //Mana
+        {
+            StartCoroutine(SlowFill(InGameUIReferences.Instance.manaBarSlowFill, (float)currentResourceAmount / (float)currentMaxResourceAmount));
+        }
+    }
+
+    private IEnumerator SlowFill(Image img, float targerAmount)
+    {
+        float _startAmount = img.fillAmount;
+        while (img.fillAmount != targerAmount)
+        {
+            img.fillAmount = Mathf.Lerp(_startAmount, targerAmount, 0.05f);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+    #endregion
 
     #region Interface Implementation
     //Getting Killed
@@ -117,7 +164,22 @@ public class PlayerController : LivingEntity
     //Knockback
     public override void AddKnockback(float amount, Vector3 direction)
     {
-        Debug.Log("Player takes: " + amount + "knockback!");
+        kbr.AddImpact(amount, direction);
+    }
+    #endregion
+
+    #region Debugging
+    private void DebugControls()
+    {
+       /*if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            TakeDamage(50);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            currentResourceAmount -= 50;
+        }*/
     }
     #endregion
 }

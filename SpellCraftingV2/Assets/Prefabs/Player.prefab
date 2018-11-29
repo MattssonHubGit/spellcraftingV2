@@ -743,6 +743,7 @@ MonoBehaviour:
   moveRightKey: 100
   moveLeftKey: 97
   rotationSpeed: 500
+  debugMode: 1
 --- !u!143 &143189383907497556
 CharacterController:
   m_ObjectHideFlags: 1
