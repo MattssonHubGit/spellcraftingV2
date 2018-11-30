@@ -1,0 +1,18 @@
+ActivasionAspect)
+Make GenerateCoreObject create the Core object and apply Methods to it - have it return with gameobject.enabled == false
+
+PlayerController)
+Add interaction with spellbook
+
+Item)
+Implement Animation() and PickUp() virtuals
+
+MethodRune)
+Implement OnUse() to add into crafting UI/Inventory
+
+RiteRune)
+Implement OnUse() to add into crafting UI/Inventory
+Implement InciteSpell() to start casting
+
+CoreRune)
+Implement OnUse() to add into crafting UI/Inventory
