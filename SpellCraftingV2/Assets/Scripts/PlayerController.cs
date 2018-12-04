@@ -12,12 +12,10 @@ public class PlayerController : LivingEntity
     //Variables
     #region Movement
     [Foldout("Player movement keys")]
-    [SerializeField]
-    private KeyCode moveForwardKey = KeyCode.W, moveBackKey = KeyCode.S, moveRightKey = KeyCode.D, moveLeftKey = KeyCode.A;
+    [SerializeField] private KeyCode moveForwardKey = KeyCode.W, moveBackKey = KeyCode.S, moveRightKey = KeyCode.D, moveLeftKey = KeyCode.A;
 
     [Header("Player rotation")]
-    [SerializeField]
-    private float rotationSpeed;
+    [SerializeField] private float rotationSpeed;
     #endregion
 
     #region myComponents
@@ -25,8 +23,10 @@ public class PlayerController : LivingEntity
     private KnockbackReceiver kbr;
     #endregion
 
-    #region Settings
+    #region Debugging
+    [Header("Debugging")]
     [SerializeField] private bool debugMode = false;
+    [SerializeField] private SpellPage mySpell;
     #endregion
 
 
@@ -127,19 +127,19 @@ public class PlayerController : LivingEntity
     private void HealthAndManaBarDisplay()
     {
         //Fast bars
-        InGameUIReferences.Instance.healthBarFastFill.fillAmount = (float)currentHealth / (float)currentMaxHealth;
-        InGameUIReferences.Instance.manaBarFastFill.fillAmount = (float)currentResourceAmount / (float)currentMaxResourceAmount;
+        InGameUIReferences.Instance.healthBarFastFill.fillAmount = (float)CurrentHealth / (float)currentMaxHealth;
+        InGameUIReferences.Instance.manaBarFastFill.fillAmount = (float)CurrentResourceAmount / (float)currentMaxResourceAmount;
 
         //Slow bars
 
-        if (InGameUIReferences.Instance.healthBarSlowFill.fillAmount != (float)currentHealth / (float)currentMaxHealth) //Health
+        if (InGameUIReferences.Instance.healthBarSlowFill.fillAmount != (float)CurrentHealth / (float)currentMaxHealth) //Health
         {
-            StartCoroutine(SlowFill(InGameUIReferences.Instance.healthBarSlowFill, (float)currentHealth / (float)currentMaxHealth));
+            StartCoroutine(SlowFill(InGameUIReferences.Instance.healthBarSlowFill, (float)CurrentHealth / (float)currentMaxHealth));
         }
 
-        if (InGameUIReferences.Instance.manaBarSlowFill.fillAmount != (float)currentResourceAmount / (float)currentMaxResourceAmount) //Mana
+        if (InGameUIReferences.Instance.manaBarSlowFill.fillAmount != (float)CurrentResourceAmount / (float)currentMaxResourceAmount) //Mana
         {
-            StartCoroutine(SlowFill(InGameUIReferences.Instance.manaBarSlowFill, (float)currentResourceAmount / (float)currentMaxResourceAmount));
+            StartCoroutine(SlowFill(InGameUIReferences.Instance.manaBarSlowFill, (float)CurrentResourceAmount / (float)currentMaxResourceAmount));
         }
     }
 

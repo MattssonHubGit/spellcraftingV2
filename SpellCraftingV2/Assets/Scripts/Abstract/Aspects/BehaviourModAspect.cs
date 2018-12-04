@@ -9,5 +9,6 @@ public abstract class BehaviourModAspect : Aspect
     [SerializeField] protected BehaviourAspect.BehaviourType modForType;
 
 
-	
+    [HideInInspector] public MethodRune Rune;
+
 }

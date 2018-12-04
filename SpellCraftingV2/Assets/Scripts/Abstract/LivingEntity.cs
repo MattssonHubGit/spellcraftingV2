@@ -22,7 +22,7 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable, IKnockbackable 
     [SerializeField] protected float currentMoveSpeed;
     [SerializeField] protected int baseMoveSpeed;
     #endregion
-    
+
     [Space]
 
     #region Resource
@@ -33,6 +33,107 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable, IKnockbackable 
     [SerializeField] protected int baseMaxResourceAmount;
 
     public enum ResourceType { HEALTH, MANA }
+    #endregion
+
+    [Space]
+
+    #region Spell prerequisites
+    [Header("Spell prerequisites")]
+    [SerializeField] protected Transform baseCoreCreationPoint;
+    protected CasterState cs = CasterState.NONE;
+
+    public enum CasterState {NONE, AIMING, CASTING };
+    #endregion
+
+    #region Getters
+    //Health
+    public int CurrentHealth
+    {
+        get { return currentHealth; }
+    }
+    public int CurrentMaxHealth
+    {
+        get
+        {
+            return currentMaxHealth;
+        }
+    }
+    public int BaseMaxHealth
+    {
+        get
+        {
+            return baseMaxHealth;
+        }
+    }
+
+    //Movement
+    public float CurrentMoveSpeed
+    {
+        get
+        {
+            return currentMoveSpeed;
+        }
+    }
+    public int BaseMoveSpeed
+    {
+        get
+        {
+            return baseMoveSpeed;
+        }
+    }
+
+    //Resource
+    public ResourceType PrimaryResource
+    {
+        get
+        {
+            return primaryResource;
+        }
+    }
+    public int CurrentResourceAmount
+    {
+        get
+        {
+            return currentResourceAmount;
+        }
+    }
+    public int CurrentMaxResourceAmount
+    {
+        get
+        {
+            return currentMaxResourceAmount;
+        }
+    }
+    public int BaseMaxResourceAmount
+    {
+        get
+        {
+            return baseMaxResourceAmount;
+        }
+    }
+
+    //Spell prerequisit
+    public Transform BaseCoreCreationPoint
+    {
+        get
+        {
+            return baseCoreCreationPoint;
+        }
+    }
+    public CasterState CastState
+    {
+        get
+        {
+            return cs;
+        }
+
+        ///Be very mindfull with this setter
+        set
+        {
+            cs = value;
+        }
+    }
+
     #endregion
 
     #region Interface Implementation

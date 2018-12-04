@@ -8,14 +8,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccc2255abb2c8414bb1c0a72fdde81bc, type: 3}
-  m_Name: MethodTestRune
+  m_Script: {fileID: 11500000, guid: 0ff3e7be6119d414f8b9198c0fda3a4d, type: 3}
+  m_Name: SpellPageTest
   m_EditorClassIdentifier: 
-  itemName: Test method
+  itemName: 
   itemID: 0
   bagable: 1
   inventoryIcon: {fileID: 0}
   worldMesh: {fileID: 0}
   worldMaterial: {fileID: 0}
-  behaviour: {fileID: 0}
-  modifiers: []
+  rite: {fileID: 0}
+  core: {fileID: 0}
+  method: {fileID: 0}

@@ -16,3 +16,11 @@ Implement InciteSpell() to start casting
 
 CoreRune)
 Implement OnUse() to add into crafting UI/Inventory
+
+SpellPage)
+Implement SpellPage UseItem() to add/remove from inventory
+Add crafting functions for setting up runes
+Add interaction with SpellBook
+
+CreateAtCastPoint)
+Implement Cast() to create the Core and apply the Method scripts onto it.

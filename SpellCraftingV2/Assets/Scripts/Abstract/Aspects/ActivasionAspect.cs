@@ -5,6 +5,10 @@ using UnityEngine;
 public abstract class ActivasionAspect : Aspect
 {
     //TODO: Make GenerateCoreObject create the Core object and apply Methods to it - have it return with gameobject.enabled == false
+    //Make the aspect enter/exit the crafting/inventory
+
+
+    [HideInInspector] public RiteRune Rune;
 
     /// <summary>
     /// Check against the cost aspect if the caster succeeds with the payment, if it returns true - enter Cast, else enter Cancel.
@@ -31,5 +35,10 @@ public abstract class ActivasionAspect : Aspect
     protected virtual GameObject GenerateCoreObject(CoreRune core, MethodRune method)
     {
         return new GameObject("Created from helpfunction in ActivasionAspect");
+    }
+
+    public override void UseItem()
+    {
+        Debug.Log("UseItem() not implemented in ActivasionAspect");
     }
 }

@@ -7,6 +7,6 @@ using UnityEngine;
 /// </summary>
 public abstract class Aspect : Item {
 
-    protected LivingEntity caster;
+    public LivingEntity Caster;
 	
 }

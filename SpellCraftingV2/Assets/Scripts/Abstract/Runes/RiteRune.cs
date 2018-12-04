@@ -17,9 +17,12 @@ public class RiteRune : Rune {
     /// Starts casting the spell by using the Aim() of it's ActivasionAspect
     /// </summary>
     /// <param name="caster"></param>
-    public void InciteSpell(LivingEntity caster)
+    public void InciteSpell()
     {
-        Debug.Log("MethodRune InciteSpell() not implemented yet");
+        //Debug.Log("MethodRune InciteSpell() not implemented yet");
+        Caster.CastState = LivingEntity.CasterState.AIMING;
+
+        activasion.Aim(cost);
     }
 
     public override void UseItem()

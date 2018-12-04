@@ -7,4 +7,7 @@ using UnityEngine;
 /// </summary>
 public abstract class Rune : Item {
 
+    [HideInInspector] public LivingEntity Caster;
+    [HideInInspector] public SpellPage Page;
+
 }
