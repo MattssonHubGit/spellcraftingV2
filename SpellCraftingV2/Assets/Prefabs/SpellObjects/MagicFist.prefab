@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 4562418221905910}
   - component: {fileID: 54269591775026342}
   - component: {fileID: 65672069021038402}
-  - component: {fileID: 114525192854345324}
+  - component: {fileID: 114828884831428436}
   m_Layer: 0
   m_Name: MagicFist
   m_TagString: Untagged
@@ -363,7 +363,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1826166288003114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.00000007118357, z: 3.76}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4925754977413942}
@@ -1034,7 +1034,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6262837, y: 0.65939987, z: 0.839885}
   m_Center: {x: 0.025741309, y: 0.056734383, z: -0.0800575}
---- !u!114 &114525192854345324
+--- !u!114 &114828884831428436
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

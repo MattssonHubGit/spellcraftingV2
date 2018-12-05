@@ -2,31 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu()]
-public class KnockbackOnImpact : ObjectAspect {
-    
-    [Header("Knockback")]
-    [SerializeField] private float knockBackAmount = 500f;
 
+public class KnockbackOnImpact : InnateEffect {
 
-    #region GetSetters
-    public float KnockBackAmount
+    private KnockbackOnImpactAspect myData;
+
+    private void Start()
     {
-        get
+        myData = (KnockbackOnImpactAspect)data;
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        IKnockbackable _kba = col.gameObject.GetComponent<IKnockbackable>();
+
+        if (_kba != null)
         {
-            return knockBackAmount;
+            Vector3 _dir = this.transform.position - col.transform.position;
+
+            _kba.AddKnockback(myData.KnockBackAmount, _dir);
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
     }
-    #endregion
-
-    protected override void OnCreate()
-    {
-
-    }
-
-    protected override void OnDestruction()
-    {
-
-    }
-
 }
