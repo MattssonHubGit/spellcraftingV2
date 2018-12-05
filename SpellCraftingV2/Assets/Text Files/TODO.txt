@@ -1,5 +1,6 @@
 ActivasionAspect)
 Make GenerateCoreObject create the Core object and apply Methods to it - have it return with gameobject.enabled == false
+Make the aspect enter/exit the crafting/inventory
 
 PlayerController)
 Add interaction with spellbook
@@ -24,3 +25,6 @@ Add interaction with SpellBook
 
 CreateAtCastPoint)
 Implement Cast() to create the Core and apply the Method scripts onto it.
+
+ObjectAspect)
+Make the aspect enter/exit the crafting/inventory

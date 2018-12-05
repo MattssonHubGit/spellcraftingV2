@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff3e7be6119d414f8b9198c0fda3a4d, type: 3}
   m_Name: SpellPageTest
   m_EditorClassIdentifier: 
-  itemName: 
-  itemID: 0
+  itemName: test spell
+  itemID: 1
   bagable: 1
   inventoryIcon: {fileID: 0}
   worldMesh: {fileID: 0}

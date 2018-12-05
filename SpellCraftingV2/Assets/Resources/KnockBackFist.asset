@@ -8,16 +8,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccc2255abb2c8414bb1c0a72fdde81bc, type: 3}
-  m_Name: MethodTestRune
+  m_Script: {fileID: 11500000, guid: fd46b8cab2020674fb0e61723b7a4a85, type: 3}
+  m_Name: KnockBackFist
   m_EditorClassIdentifier: 
-  itemName: Test Method
-  itemID: 0
+  itemName: Fist of Knockback
+  itemID: 4
   bagable: 1
   inventoryIcon: {fileID: 0}
   worldMesh: {fileID: 0}
   worldMaterial: {fileID: 0}
   Caster: {fileID: 0}
-  Page: {fileID: 0}
-  behaviour: {fileID: 0}
-  modifiers: []
+  objectPrefab: {fileID: 1826166288003114, guid: 2b6a15189c7f2b3499d9a496a8f63ddc,
+    type: 2}
+  myEffect: {fileID: 0}
+  Rune: {fileID: 0}
+  knockBackAmount: 500
