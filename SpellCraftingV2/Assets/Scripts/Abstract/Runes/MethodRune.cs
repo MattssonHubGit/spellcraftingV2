@@ -12,6 +12,25 @@ public class MethodRune : Rune
     [SerializeField] private List<BehaviourModAspect> modifiers = new List<BehaviourModAspect>();
 
 
+
+    #region GetSetters
+    public BehaviourAspect Behaviour
+    {
+        get
+        {
+            return behaviour;
+        }
+    }
+
+    public List<BehaviourModAspect> Modifiers
+    {
+        get
+        {
+            return modifiers;
+        }
+    }
+    #endregion
+
     public override void UseItem()
     {
         Debug.Log("MethodRune UseItem not implemented yet");

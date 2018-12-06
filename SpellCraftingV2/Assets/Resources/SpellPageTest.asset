@@ -17,6 +17,6 @@ MonoBehaviour:
   inventoryIcon: {fileID: 0}
   worldMesh: {fileID: 0}
   worldMaterial: {fileID: 0}
-  rite: {fileID: 0}
-  core: {fileID: 0}
-  method: {fileID: 0}
+  rite: {fileID: 11400000, guid: 06c0703a022dfe743b4aa8b78c6b558f, type: 2}
+  core: {fileID: 11400000, guid: 51e379afd49ae1d40bc6b98287e2fc2a, type: 2}
+  method: {fileID: 11400000, guid: 420e05dbdbb719f43921544ca17d4670, type: 2}

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public abstract class ActivasionAspect : Aspect
 {
-    //TODO: Make GenerateCoreObject create the Core object and apply Methods to it - have it return with gameobject.enabled == false
+    //TODO: Apply methods to the gameobject returned by GenerateCoreObject
     //Make the aspect enter/exit the crafting/inventory
+    //Apply CoreModAspects to the object in GenerateCoreObject
 
 
     [HideInInspector] public RiteRune Rune;
@@ -19,7 +20,7 @@ public abstract class ActivasionAspect : Aspect
     /// <summary>
     /// A successfully paid cost is cast, creating a Core Object and applying all Mods and Behaivour Aspects to it
     /// </summary>
-    protected abstract void Cast(CoreRune core, MethodRune method);
+    protected abstract void Cast(/*CoreRune core, MethodRune method*/);
 
     /// <summary>
     /// A unsuccessful attempt to pay the cost results in a canceld aimed.
@@ -32,9 +33,27 @@ public abstract class ActivasionAspect : Aspect
     /// <param name="core"></param>
     /// <param name="method"></param>
     /// <returns></returns>
-    protected virtual GameObject GenerateCoreObject(CoreRune core, MethodRune method)
+    protected virtual GameObject GenerateCoreObject(/*CoreRune core, MethodRune method*/)
     {
-        return new GameObject("Created from helpfunction in ActivasionAspect");
+        //Create object and supply with data
+        GameObject coreObject = Instantiate(Rune.Page.Core.SpellObject.ObjectPrefab, new Vector3(-5000f, -5000f, -5000f), Quaternion.identity);
+        Rune.Page.Core.SpellObject.SetInnateEffectData(coreObject);
+
+        /*
+         Add Coremods here 
+        */
+
+        /*
+        Add Methods/Methodmods here
+        */
+
+        //return it false to make it easier to reposition/set-up
+        coreObject.SetActive(false);
+
+        return coreObject;
+
+
+        //return new GameObject("Created from helpfunction in ActivasionAspect");
     }
 
     public override void UseItem()

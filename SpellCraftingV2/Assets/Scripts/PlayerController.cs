@@ -171,15 +171,21 @@ public class PlayerController : LivingEntity
     #region Debugging
     private void DebugControls()
     {
-       /*if (Input.GetKeyDown(KeyCode.Keypad0))
+        /*if (Input.GetKeyDown(KeyCode.Keypad0))
+         {
+             TakeDamage(50);
+         }
+
+         if (Input.GetKeyDown(KeyCode.Keypad1))
+         {
+             currentResourceAmount -= 50;
+         }*/
+
+        if (Input.GetMouseButtonDown(0))
         {
-            TakeDamage(50);
+            mySpell.CastSpell((LivingEntity)this);
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            currentResourceAmount -= 50;
-        }*/
     }
     #endregion
 }

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public abstract class CostAspect : Aspect
 {
-    public enum CostType { HEALTH, MANA}
+    //TODO: Make the aspect enter/exit the crafting/inventory
+
+        
     [Header("Cost Aspect")]
-    [SerializeField] protected CostType costType;
+    [SerializeField] protected LivingEntity.ResourceType costType;
     [SerializeField] protected int costAmount;
 
 
@@ -18,5 +20,11 @@ public abstract class CostAspect : Aspect
     /// <param name="caster"></param>
     /// <returns></returns>
     public abstract bool AttemptPay(LivingEntity caster);
+
+
+    public override void UseItem()
+    {
+        Debug.Log("UseItem() not implemented in ActivasionAspect");
+    }
 
 }

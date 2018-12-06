@@ -18,6 +18,6 @@ MonoBehaviour:
   worldMesh: {fileID: 0}
   worldMaterial: {fileID: 0}
   Caster: {fileID: 0}
-  Page: {fileID: 0}
-  spellObject: {fileID: 0}
+  Page: {fileID: 11400000, guid: b2a7c72d8a1b97941b75206993e91e53, type: 2}
+  spellObject: {fileID: 11400000, guid: 2d36206f69bac9b4c8c67fa58a6d2d7c, type: 2}
   modifiers: []

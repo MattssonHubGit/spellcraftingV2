@@ -13,6 +13,28 @@ public class RiteRune : Rune {
     [SerializeField] private CostAspect cost;
 
 
+
+    #region GetSetters
+    public ActivasionAspect Activasion
+    {
+        get
+        {
+            return activasion;
+        }
+    }
+
+    public CostAspect Cost
+    {
+        get
+        {
+            return cost;
+        }
+    }
+
+
+    #endregion
+
+
     /// <summary>
     /// Starts casting the spell by using the Aim() of it's ActivasionAspect
     /// </summary>

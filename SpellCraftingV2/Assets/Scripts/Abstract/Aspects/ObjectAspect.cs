@@ -12,9 +12,20 @@ public abstract class ObjectAspect : Aspect
 
     [HideInInspector] public CoreRune Rune;
 
-    public virtual void SetInnateEffect(GameObject applyTo)
+    #region GetSetters
+    public GameObject ObjectPrefab
+    {
+        get
+        {
+            return objectPrefab;
+        }
+    }
+    #endregion
+
+    public virtual void SetInnateEffectData(GameObject applyTo)
     {
         applyTo.GetComponent<InnateEffect>().data = this;
+        applyTo.GetComponent<InnateEffect>().caster = Caster;
     }
     protected abstract void OnDestruction();
     protected abstract void OnCreate();

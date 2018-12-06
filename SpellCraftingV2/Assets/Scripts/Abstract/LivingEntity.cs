@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class LivingEntity : MonoBehaviour, IDamageable, IKnockbackable {
 
+    //TODO: Create and implement a default version of a IResourceDamagable interface
+
     [Header("Entity Variables")]
 
     [Space]
@@ -95,6 +97,12 @@ public abstract class LivingEntity : MonoBehaviour, IDamageable, IKnockbackable 
         get
         {
             return currentResourceAmount;
+        }
+
+        //TEMPORARY
+        set
+        {
+            currentResourceAmount = value;
         }
     }
     public int CurrentMaxResourceAmount

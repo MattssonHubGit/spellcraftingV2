@@ -8,5 +8,6 @@ using UnityEngine;
 [System.Serializable]
 public abstract class InnateEffect : MonoBehaviour
 {
-    [SerializeField] public ScriptableObject data;
+    [HideInInspector] public ScriptableObject data;
+    [HideInInspector] public LivingEntity caster;
 }

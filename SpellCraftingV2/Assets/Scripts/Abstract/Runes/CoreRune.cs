@@ -11,6 +11,24 @@ public class CoreRune : Rune {
     [SerializeField] private ObjectAspect spellObject;
     [SerializeField] private List<CoreModAspect> modifiers = new List<CoreModAspect>();
 
+    #region GetSetters
+    public ObjectAspect SpellObject
+    {
+        get
+        {
+            return spellObject;
+        }
+    }
+
+    public List<CoreModAspect> Modifiers
+    {
+        get
+        {
+            return modifiers;
+        }
+    }
+    #endregion
+
     public override void UseItem()
     {
         Debug.Log("MethodRune UseItem not implemented yet");
