@@ -20,6 +20,10 @@ MonoBehaviour:
   Caster: {fileID: 0}
   objectPrefab: {fileID: 1826166288003114, guid: 2b6a15189c7f2b3499d9a496a8f63ddc,
     type: 2}
-  myEffect: {fileID: 0}
-  Rune: {fileID: 0}
-  knockBackAmount: 500
+  InnateEffectScript: KnockbackOnImpact
+  Rune: {fileID: 11400000, guid: 51e379afd49ae1d40bc6b98287e2fc2a, type: 2}
+  knockBackAmount: 900
+  destroyOnFirstCollision: 1
+  destroyOnXthCollision: 0
+  destroyAfterRealTime: 15
+  shouldHitCaster: 1

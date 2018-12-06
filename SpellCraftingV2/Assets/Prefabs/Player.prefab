@@ -252,7 +252,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1610054589564768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.061, y: 0.229, z: -0.058}
+  m_LocalPosition: {x: 0.42, y: 3.75, z: 3.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4445694880521592}
@@ -918,6 +918,7 @@ MonoBehaviour:
   moveLeftKey: 97
   rotationSpeed: 500
   debugMode: 1
+  mySpell: {fileID: 11400000, guid: b2a7c72d8a1b97941b75206993e91e53, type: 2}
 --- !u!143 &143189383907497556
 CharacterController:
   m_ObjectHideFlags: 1

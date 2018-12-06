@@ -271,12 +271,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114021279000618934, guid: fee95ad6d97a17a429113cf2058524a8,
-        type: 2}
-      propertyPath: mySpell
-      value: 
-      objectReference: {fileID: 11400000, guid: b2a7c72d8a1b97941b75206993e91e53,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fee95ad6d97a17a429113cf2058524a8, type: 2}
   m_IsPrefabParent: 0
