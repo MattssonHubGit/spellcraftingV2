@@ -38,6 +38,3 @@ Make the aspect enter/exit the crafting/inventory
 
 LivingEntity)
 Create and implement a default version of a IResourceDamagable interface
-
-KnockbackOnImpact)
-Check debugs for weather or not the collision registers the caster

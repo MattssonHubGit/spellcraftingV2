@@ -25,7 +25,6 @@ public abstract class ObjectAspect : Aspect
     public virtual void SetInnateEffectData(GameObject applyTo)
     {
         applyTo.GetComponent<InnateEffect>().data = this;
-        applyTo.GetComponent<InnateEffect>().caster = Caster;
     }
     protected abstract void OnDestruction();
     protected abstract void OnCreate();
