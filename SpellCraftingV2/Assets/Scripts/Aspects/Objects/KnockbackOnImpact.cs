@@ -7,14 +7,10 @@ public class KnockbackOnImpact : InnateEffect
 {
 
     private KnockbackOnImpactAspect myData;
-    private int collisionCounter = 0;
 
     private void Start()
     {
         myData = (KnockbackOnImpactAspect)data;
-
-        //Destroy after time
-        Destroy(this.gameObject, myData.DestroyAfterRealTime);
     }
 
 
@@ -115,22 +111,22 @@ public class KnockbackOnImpact : InnateEffect
             if (checkIgnore != myData.Caster) //It's not the caster
             {
                 AddKnockbackIfPossible(_kba, col);
-                DestructionHandeler();
+                //DestructionHandler();
             }
             else if (myData.ShouldHitCaster == true) //Doesn't care if hitting caster
             {
                 AddKnockbackIfPossible(_kba, col);
-                DestructionHandeler();
+               //DestructionHandler();
             }
             else //Does not hit caster
             {
-               // DestructionHandeler();
+
             }
         }
         else //Is not hitting a LivingEntity
         {
             AddKnockbackIfPossible(_kba, col);
-            DestructionHandeler();
+            //DestructionHandler();
         }
     }
 
@@ -143,19 +139,6 @@ public class KnockbackOnImpact : InnateEffect
 
         Vector3 _dir = col.transform.position - this.transform.position;
         kba.AddKnockback(myData.KnockBackAmount, _dir);
-    }
-
-    private void DestructionHandeler()
-    {
-        collisionCounter++;
-        if (myData.DestroyOnFirstCollision)//Just destroy on the first collision
-        {
-            Destroy(this.gameObject);
-        }
-        else if (collisionCounter >= myData.DestroyOnXthCollision)//Destroy if having colided with enough other things
-        {
-            Destroy(this.gameObject);
-        }
     }
 
 }

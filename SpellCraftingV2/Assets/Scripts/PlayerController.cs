@@ -8,6 +8,7 @@ using Homebrew;
 public class PlayerController : LivingEntity
 {
     //TODO: Add interaction with spellbook
+    //Smooth out resource regaining
 
     //Variables
     #region Movement
@@ -16,6 +17,12 @@ public class PlayerController : LivingEntity
 
     [Header("Player rotation")]
     [SerializeField] private float rotationSpeed;
+    #endregion
+
+    #region Resources
+    [Header("Resources")]
+    [SerializeField] private int regenAmount = 5;
+    private float regenCooldown = 0;
     #endregion
 
     #region myComponents
@@ -47,6 +54,9 @@ public class PlayerController : LivingEntity
 
         //UI
         HealthAndManaBarDisplay();
+
+        //Resources
+        ManaRegen();
 
         #region Debug
         if (debugMode)
@@ -151,6 +161,31 @@ public class PlayerController : LivingEntity
             img.fillAmount = Mathf.Lerp(_startAmount, targerAmount, 0.05f);
             yield return new WaitForEndOfFrame();
         }
+    }
+    #endregion
+
+    #region Resources
+    private void ManaRegen()
+    {
+
+        if (regenCooldown >= 1)
+        {
+            if (currentResourceAmount < currentMaxResourceAmount)
+            {
+                currentResourceAmount += regenAmount;
+                if (currentResourceAmount > currentMaxResourceAmount)
+                {
+                    currentResourceAmount = currentMaxResourceAmount;
+                }
+            }
+            regenCooldown = 0;
+        }
+        else
+        {
+            regenCooldown += Time.deltaTime;
+        }
+
+
     }
     #endregion
 

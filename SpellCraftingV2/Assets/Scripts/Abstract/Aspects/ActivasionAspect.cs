@@ -37,7 +37,7 @@ public abstract class ActivasionAspect : Aspect
     {
         //Create object and supply with data
         GameObject coreObject = Instantiate(Rune.Page.Core.SpellObject.ObjectPrefab, new Vector3(-5000f, -5000f, -5000f), Quaternion.identity);
-        Rune.Page.Core.SpellObject.SetInnateEffectData(coreObject);
+        Rune.Page.Core.SpellObject.SetInnateEffectAndData(coreObject);
 
         /*
          Add Coremods here 
@@ -46,6 +46,8 @@ public abstract class ActivasionAspect : Aspect
         /*
         Add Methods/Methodmods here
         */
+
+        Rune.Page.Method.Behaviour.SetBehaviourAndData(coreObject);
 
         //return it false to make it easier to reposition/set-up
         coreObject.SetActive(false);

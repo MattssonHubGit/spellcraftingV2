@@ -5,6 +5,7 @@ Apply CoreModAspects to the object in GenerateCoreObject
 
 PlayerController)
 Add interaction with spellbook
+Smooth out resource regaining
 
 Item)
 Implement Animation() and PickUp() virtuals
@@ -38,3 +39,9 @@ Make the aspect enter/exit the crafting/inventory
 
 LivingEntity)
 Create and implement a default version of a IResourceDamagable interface
+
+BehaviourAspect)
+Make the aspect enter/exit the crafting/inventory
+
+ProjectileAspect)
+TakeVariableModification should be implemented to change personal variables

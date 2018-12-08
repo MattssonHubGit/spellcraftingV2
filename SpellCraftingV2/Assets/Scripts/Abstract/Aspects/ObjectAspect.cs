@@ -23,7 +23,10 @@ public abstract class ObjectAspect : Aspect
     }
     #endregion
 
-    public virtual void SetInnateEffectData(GameObject applyTo)
+    /// <summary>
+    /// A subclass should a component on a gameobject, meaning the behaivour should apply to it's own transform.
+    /// </summary>
+    public virtual void SetInnateEffectAndData(GameObject applyTo)
     {
         //Check if the script exists, and is a InnateEffect. If so, add it and if not debug errors
         System.Type mType = System.Type.GetType(InnateEffectScript); 

@@ -9,7 +9,6 @@ public class KnockbackOnImpactAspect : ObjectAspect {
     [SerializeField] private float knockBackAmount = 500f;
     [SerializeField] private bool destroyOnFirstCollision = true;
     [SerializeField] private int destroyOnXthCollision = 0;
-    [SerializeField] private float destroyAfterRealTime = 15f;
     [SerializeField] private bool shouldHitCaster = false;
 
 
@@ -37,14 +36,7 @@ public class KnockbackOnImpactAspect : ObjectAspect {
             return destroyOnXthCollision;
         }
     }
-
-    public float DestroyAfterRealTime
-    {
-        get
-        {
-            return destroyAfterRealTime;
-        }
-    }
+    
 
     public bool ShouldHitCaster
     {

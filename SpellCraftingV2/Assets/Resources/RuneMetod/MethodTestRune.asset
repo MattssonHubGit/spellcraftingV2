@@ -18,6 +18,6 @@ MonoBehaviour:
   worldMesh: {fileID: 0}
   worldMaterial: {fileID: 0}
   Caster: {fileID: 0}
-  Page: {fileID: 0}
-  behaviour: {fileID: 0}
+  Page: {fileID: 11400000, guid: b2a7c72d8a1b97941b75206993e91e53, type: 2}
+  behaviour: {fileID: 11400000, guid: 09ff7fde80f97a1408a9bde0a9d9b161, type: 2}
   modifiers: []
