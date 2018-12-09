@@ -88,9 +88,9 @@ public class SpellPage : Item {
             core.Modifiers[i].Rune = core;
         }
 
-        /*method.Behaviour.Caster = _caster;
-          method.Behaviour.Rune = method;
-        for (int i = 0; i < method.Modifiers.Count; i++)
+        method.Behaviour.Caster = _caster;
+        method.Behaviour.Rune = method;
+        /*for (int i = 0; i < method.Modifiers.Count; i++)
         {
             method.Modifiers[i].Caster = _caster;
             method.Modifiers[i].Rune = method;
