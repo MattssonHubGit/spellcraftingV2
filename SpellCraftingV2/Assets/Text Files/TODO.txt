@@ -2,6 +2,7 @@ ActivasionAspect)
 Apply methods to the gameobject returned by GenerateCoreObject
 Make the aspect enter/exit the crafting/inventory
 Apply CoreModAspects to the object in GenerateCoreObject
+Apply MethodMods to the object in GenerateCoreObject
 
 PlayerController)
 Add interaction with spellbook

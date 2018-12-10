@@ -7,9 +7,10 @@ public abstract class ActivasionAspect : Aspect
     //TODO: Apply methods to the gameobject returned by GenerateCoreObject
     //Make the aspect enter/exit the crafting/inventory
     //Apply CoreModAspects to the object in GenerateCoreObject
+    //Apply MethodMods to the object in GenerateCoreObject
 
 
-    [HideInInspector] public RiteRune Rune;
+        [HideInInspector] public RiteRune Rune;
 
     /// <summary>
     /// Check against the cost aspect if the caster succeeds with the payment, if it returns true - enter Cast, else enter Cancel.
@@ -38,16 +39,14 @@ public abstract class ActivasionAspect : Aspect
         //Create object and supply with data
         GameObject coreObject = Instantiate(Rune.Page.Core.SpellObject.ObjectPrefab, new Vector3(-5000f, -5000f, -5000f), Quaternion.identity);
         Rune.Page.Core.SpellObject.SetInnateEffectAndData(coreObject);
-
         /*
          Add Coremods here 
         */
 
+        Rune.Page.Method.Behaviour.SetBehaviourAndData(coreObject);
         /*
         Add Methods/Methodmods here
         */
-
-        Rune.Page.Method.Behaviour.SetBehaviourAndData(coreObject);
 
         //return it false to make it easier to reposition/set-up
         coreObject.SetActive(false);

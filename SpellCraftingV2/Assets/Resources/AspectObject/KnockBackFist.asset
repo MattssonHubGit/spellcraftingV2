@@ -25,5 +25,4 @@ MonoBehaviour:
   knockBackAmount: 900
   destroyOnFirstCollision: 1
   destroyOnXthCollision: 0
-  destroyAfterRealTime: 15
-  shouldHitCaster: 1
+  shouldHitCaster: 0

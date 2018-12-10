@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public abstract class Behaviour : MonoBehaviour {
 
-    /*[HideInInspector]*/ public ScriptableObject data;
+    [HideInInspector] public ScriptableObject data;
 
     /// <summary>
     /// Include conditions for destroying the onbject
