@@ -4,10 +4,7 @@ using UnityEngine;
 
 public abstract class ActivasionAspect : Aspect
 {
-    //TODO: Apply methods to the gameobject returned by GenerateCoreObject
-    //Make the aspect enter/exit the crafting/inventory
-    //Apply CoreModAspects to the object in GenerateCoreObject
-    //Apply MethodMods to the object in GenerateCoreObject
+    //TODO: Make the aspect enter/exit the crafting/inventory
 
 
         [HideInInspector] public RiteRune Rune;
@@ -21,7 +18,7 @@ public abstract class ActivasionAspect : Aspect
     /// <summary>
     /// A successfully paid cost is cast, creating a Core Object and applying all Mods and Behaivour Aspects to it
     /// </summary>
-    protected abstract void Cast(/*CoreRune core, MethodRune method*/);
+    protected abstract void Cast();
 
     /// <summary>
     /// A unsuccessful attempt to pay the cost results in a canceld aimed.
@@ -39,14 +36,35 @@ public abstract class ActivasionAspect : Aspect
         //Create object and supply with data
         GameObject coreObject = Instantiate(Rune.Page.Core.SpellObject.ObjectPrefab, new Vector3(-5000f, -5000f, -5000f), Quaternion.identity);
         Rune.Page.Core.SpellObject.SetInnateEffectAndData(coreObject);
-        /*
-         Add Coremods here 
-        */
 
+        //Apply CoreMods
+        for (int i = 0; i < Rune.Page.Core.Modifiers.Count; i++)
+        {
+            Rune.Page.Core.Modifiers[i].SetModEffectAndData(coreObject);
+        }
+
+        //Add behaviour
         Rune.Page.Method.Behaviour.SetBehaviourAndData(coreObject);
-        /*
-        Add Methods/Methodmods here
-        */
+
+        //Mod behaviour
+        for (int i = 0; i < Rune.Page.Method.Modifiers.Count; i++)
+        {
+            if (Rune.Page.Method.Modifiers[i].ShouldApplyScript) //Should the mod apply a new script to the object?
+            {
+                Rune.Page.Method.Modifiers[i].SetModBehaviourAndData(coreObject);
+            }
+
+            if (Rune.Page.Method.Modifiers[i].ShouldChangeVariables) //Should the mod change variables in the behaviour?
+            {
+                Behaviour _behaivourToMod = coreObject.GetComponent<Behaviour>();
+                if (_behaivourToMod.AcceptModOfType(Rune.Page.Method.Modifiers[i].ModForType)) //Does the behaviour accept this mod?
+                {
+                    _behaivourToMod.ModMyVariables(Rune.Page.Method.Modifiers[i]);
+                }
+            }
+
+
+        }
 
         //return it false to make it easier to reposition/set-up
         coreObject.SetActive(false);

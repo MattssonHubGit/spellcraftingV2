@@ -1,8 +1,5 @@
 ActivasionAspect)
-Apply methods to the gameobject returned by GenerateCoreObject
 Make the aspect enter/exit the crafting/inventory
-Apply CoreModAspects to the object in GenerateCoreObject
-Apply MethodMods to the object in GenerateCoreObject
 
 PlayerController)
 Add interaction with spellbook
@@ -32,9 +29,6 @@ Implement Cast() to create the Core and apply the Method scripts onto it.
 ObjectAspect)
 Make the aspect enter/exit the crafting/inventory
 
-CoreModAspect)
-Either seperate from scriptableObject or find a way to serialize a monobehaivour script to apply
-
 CostAspect)
 Make the aspect enter/exit the crafting/inventory
 
@@ -46,3 +40,12 @@ Make the aspect enter/exit the crafting/inventory
 
 ProjectileAspect)
 TakeVariableModification should be implemented to change personal variables
+
+Projectile)
+Implement ModMyVariables()
+
+BehaviourModAspect)
+Verify that the order of GetComponents<>() returns the latest added Type at the end of the array
+
+CoreModAspect)
+Verify that the order of GetComponents<>() returns the latest added Type at the end of the array

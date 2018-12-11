@@ -19,8 +19,8 @@ MonoBehaviour:
   worldMaterial: {fileID: 0}
   Caster: {fileID: 0}
   behaviourType: 0
-  BehaviourScript: Projectile
-  Rune: {fileID: 0}
+  behaviourScript: Projectile
+  Rune: {fileID: 11400000, guid: 420e05dbdbb719f43921544ca17d4670, type: 2}
   speed: 20
   rotateOverTime: 0
   rotationSpeedX: 0

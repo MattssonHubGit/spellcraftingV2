@@ -8,9 +8,35 @@ using UnityEngine;
 public abstract class Behaviour : MonoBehaviour {
 
     [HideInInspector] public ScriptableObject data;
+    [SerializeField] protected BehaviourAspect.BehaviourType acceptBehaviourType = BehaviourAspect.BehaviourType.PROJECTILE;
 
     /// <summary>
     /// Include conditions for destroying the onbject
     /// </summary>
     protected abstract void DestructionHandler();
+
+    /// <summary>
+    /// Trust that only data similar to the returntype of AcceptModForType
+    /// </summary>
+    /// <param name="modData"></param>
+    public abstract void ModMyVariables(ScriptableObject modData);
+
+
+    /// <summary>
+    /// Check if a mod can be applied to this object
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public virtual bool AcceptModOfType(BehaviourAspect.BehaviourType type)
+    {
+        //By default only accept mods with the same type as self
+        if (type == acceptBehaviourType)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

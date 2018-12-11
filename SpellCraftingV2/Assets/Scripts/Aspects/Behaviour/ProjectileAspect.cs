@@ -86,21 +86,4 @@ public class ProjectileAspect : BehaviourAspect {
 
 
     #endregion
-
-    public override bool AcceptModOfType(BehaviourType type)
-    {
-        if (type == behaviourType)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public override void TakeVariableModification(BehaviourModAspect mod)
-    {
-        Debug.Log("TakeVariableModification() should be implemented to change personal variables");
-    }
 }

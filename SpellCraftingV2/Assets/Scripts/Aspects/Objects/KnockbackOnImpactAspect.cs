@@ -47,14 +47,4 @@ public class KnockbackOnImpactAspect : ObjectAspect {
     }
     #endregion
 
-    protected override void OnCreate()
-    {
-
-    }
-
-    protected override void OnDestruction()
-    {
-
-    }
-
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Projectile : Behaviour {
 
+    //TODO : Implement ModMyVariables()
+
     private ProjectileAspect myData;
     private int collisionCounter = 0;
 
@@ -83,5 +85,10 @@ public class Projectile : Behaviour {
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public override void ModMyVariables(ScriptableObject modData)
+    {
+        Debug.Log("Projectile ModMyVariables() has no logic implemented");
     }
 }

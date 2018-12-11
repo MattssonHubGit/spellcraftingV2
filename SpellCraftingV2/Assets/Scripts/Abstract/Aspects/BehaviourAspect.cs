@@ -10,7 +10,7 @@ public abstract class BehaviourAspect : Aspect
     public enum BehaviourType { PROJECTILE, ROTATING_AURA, RAIN, GROUND_SPIKE, RUNE }
     [Header("Behaviour Aspect")]
     [SerializeField] protected BehaviourType behaviourType;
-    [SerializeField] private string BehaviourScript = "";
+    [SerializeField] protected string behaviourScript = "";
 
 
     [HideInInspector] public MethodRune Rune;
@@ -21,7 +21,7 @@ public abstract class BehaviourAspect : Aspect
     public virtual void SetBehaviourAndData(GameObject applyTo)
     {
         //Check if the script exists, and is a Behaviour. If so, add it and if not debug errors
-        System.Type mType = System.Type.GetType(BehaviourScript);
+        System.Type mType = System.Type.GetType(behaviourScript);
         if (mType == null) //Does the string translate to the name of a class?
         {
             Debug.LogError("BehaviourScript string does not match any existing script name");
@@ -30,7 +30,7 @@ public abstract class BehaviourAspect : Aspect
         {
             if (mType.GetType().IsInstanceOfType(typeof(Behaviour))) //Is the class deriving from Behaviour?
             {
-                //Add the class and set it's data to a subclass of ObjectAspect
+                //Add the class and set it's data to a subclass of BehaviourAspect
                 applyTo.AddComponent(mType);
                 applyTo.GetComponent<Behaviour>().data = this;
             }
@@ -41,29 +41,6 @@ public abstract class BehaviourAspect : Aspect
         }
     }
 
-    /// <summary>
-    /// Any mod that changes a variable goes through here
-    /// </summary>
-    /// <param name="mod"></param>
-    public abstract void TakeVariableModification(BehaviourModAspect mod);
-
-    /// <summary>
-    /// Check if a mod can be applied to this object
-    /// </summary>
-    /// <param name="type"></param>
-    /// <returns></returns>
-    public virtual bool AcceptModOfType(BehaviourType type)
-    {
-        //By default only accept mods with the same type as self
-        if(type == this.behaviourType)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
     public override void UseItem()
     {

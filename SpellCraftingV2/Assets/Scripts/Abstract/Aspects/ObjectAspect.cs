@@ -48,8 +48,6 @@ public abstract class ObjectAspect : Aspect
             }
         }
     }
-    protected abstract void OnDestruction();
-    protected abstract void OnCreate();
 
 
     public override void UseItem()
