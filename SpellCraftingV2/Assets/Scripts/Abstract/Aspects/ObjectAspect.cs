@@ -39,8 +39,8 @@ public abstract class ObjectAspect : Aspect
             if (mType.GetType().IsInstanceOfType(typeof(InnateEffect))) //Is the class deriving from InnateEffect?
             {
                 //Add the class and set it's data to a subclass of ObjectAspect
-                applyTo.AddComponent(mType);
-                applyTo.GetComponent<InnateEffect>().data = this;
+                InnateEffect thisEffect = (InnateEffect)applyTo.AddComponent(mType);
+                thisEffect.data = this;
             }
             else
             {

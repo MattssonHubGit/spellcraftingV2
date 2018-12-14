@@ -31,8 +31,8 @@ public abstract class BehaviourAspect : Aspect
             if (mType.GetType().IsInstanceOfType(typeof(Behaviour))) //Is the class deriving from Behaviour?
             {
                 //Add the class and set it's data to a subclass of BehaviourAspect
-                applyTo.AddComponent(mType);
-                applyTo.GetComponent<Behaviour>().data = this;
+                Behaviour thisBehaviour = (Behaviour)applyTo.AddComponent(mType);
+                thisBehaviour.data = this;
             }
             else
             {

@@ -23,9 +23,8 @@ public abstract class CoreModAspect : Aspect
             if (mType.GetType().IsInstanceOfType(typeof(LesserEffect))) //Is the class deriving from Behaviour?
             {
                 //Add the class and set it's latest added LesserEffect data to a subclass of BehaviourModAspect
-                applyTo.AddComponent(mType);
-                LesserEffect[] allLesserBehaviours = applyTo.GetComponents<LesserEffect>();
-                allLesserBehaviours[allLesserBehaviours.Length - 1].data = this;
+                LesserEffect thisEffect = (LesserEffect)applyTo.AddComponent(mType);
+                thisEffect.data = this;
 
             }
             else
