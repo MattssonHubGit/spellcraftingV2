@@ -62,9 +62,9 @@ public class Projectile : Behaviour {
                 //BounceHandler(col.gameObject);
                 DestructionHandler();
             }
-            else //Does not hit caster
+            else if(myData.RegisterCasterAsImpact == true) //Care about caster?
             {
-
+                DestructionHandler();
             }
         }
         else //Is not hitting a LivingEntity

@@ -111,12 +111,10 @@ public class KnockbackOnImpact : InnateEffect
             if (checkIgnore != myData.Caster) //It's not the caster
             {
                 AddKnockbackIfPossible(_kba, col);
-                //DestructionHandler();
             }
             else if (myData.ShouldHitCaster == true) //Doesn't care if hitting caster
             {
                 AddKnockbackIfPossible(_kba, col);
-               //DestructionHandler();
             }
             else //Does not hit caster
             {
@@ -126,7 +124,6 @@ public class KnockbackOnImpact : InnateEffect
         else //Is not hitting a LivingEntity
         {
             AddKnockbackIfPossible(_kba, col);
-            //DestructionHandler();
         }
     }
 

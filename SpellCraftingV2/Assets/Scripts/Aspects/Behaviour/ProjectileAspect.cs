@@ -15,6 +15,7 @@ public class ProjectileAspect : BehaviourAspect {
     [SerializeField] private float rotationSpeedZ;
     //[SerializeField] private bool bounce = false;
     [SerializeField] private bool destroyOnFirstImpact = true;
+    [SerializeField] private bool registerCasterAsImpact = false;
     [SerializeField] private int destroyOnXthImpact = 0;
     [SerializeField] private float destroyAfterRealTime = 15f;
 
@@ -81,6 +82,14 @@ public class ProjectileAspect : BehaviourAspect {
         get
         {
             return destroyAfterRealTime;
+        }
+    }
+
+    public bool RegisterCasterAsImpact
+    {
+        get
+        {
+            return registerCasterAsImpact;
         }
     }
 
