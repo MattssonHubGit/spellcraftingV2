@@ -4,9 +4,11 @@ using UnityEngine;
 
 public abstract class CoreModAspect : Aspect
 {
-    //TODO: Verify that the order of GetComponents<>() returns the latest added Type at the end of the array
+    //TODO: Make the aspect enter/exit the crafting/inventory and add additional mod slots
 
     [SerializeField] protected string effectScript = "";
+    [SerializeField] private ScriptableObject effectData;
+
 
     [HideInInspector] public CoreRune Rune;
 
@@ -20,18 +22,23 @@ public abstract class CoreModAspect : Aspect
         }
         else
         {
-            if (mType.GetType().IsInstanceOfType(typeof(LesserEffect))) //Is the class deriving from Behaviour?
+            if (mType.GetType().IsInstanceOfType(typeof(InnateEffect))) //Is the class deriving from Behaviour?
             {
-                //Add the class and set it's latest added LesserEffect data to a subclass of BehaviourModAspect
-                LesserEffect thisEffect = (LesserEffect)applyTo.AddComponent(mType);
-                thisEffect.data = this;
+                //Add the class and set it's data to a subclass of BehaviourModAspect
+                InnateEffect thisEffect = (InnateEffect)applyTo.AddComponent(mType);
+                thisEffect.data = effectData;
+                thisEffect.caster = Caster;
 
             }
             else
             {
-                Debug.LogError("EffectScript string is not the name of a LesserEffect");
+                Debug.LogError("EffectScript string is not the name of a InnateEffect");
             }
         }
     }
 
+    public override void UseItem()
+    {
+        Debug.Log("UseItem() not implemented in CoreModAspect");
+    }
 }

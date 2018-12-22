@@ -893,7 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c1593d6ad2dbe4f862d227f1c1a734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 1956717548932390, guid: 0f5a8122c7088b744820105893d5b2eb, type: 2}
   key: 258
 --- !u!23 &695862254
 MeshRenderer:

@@ -9,6 +9,7 @@ public abstract class ObjectAspect : Aspect
     [Header("Object Aspect")]
     [SerializeField] protected GameObject objectPrefab;
     [SerializeField] private string InnateEffectScript = "";
+    [SerializeField] private ScriptableObject effectData;
 
 
     [HideInInspector] public CoreRune Rune;
@@ -40,7 +41,8 @@ public abstract class ObjectAspect : Aspect
             {
                 //Add the class and set it's data to a subclass of ObjectAspect
                 InnateEffect thisEffect = (InnateEffect)applyTo.AddComponent(mType);
-                thisEffect.data = this;
+                thisEffect.data = effectData;
+                thisEffect.caster = Caster;
             }
             else
             {
@@ -48,7 +50,6 @@ public abstract class ObjectAspect : Aspect
             }
         }
     }
-
 
     public override void UseItem()
     {

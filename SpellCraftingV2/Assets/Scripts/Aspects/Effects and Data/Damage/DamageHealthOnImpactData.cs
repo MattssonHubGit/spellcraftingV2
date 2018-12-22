@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu()]
-public class KnockbackOnImpactAspect : ObjectAspect {
-    
-    [Header("Knockback")]
-    [SerializeField] private float knockBackAmount = 500f;
+[CreateAssetMenu]
+public class DamageHealthOnImpactData : ScriptableObject {
+
+    [Header("Damage")]
+    [SerializeField] private int damageAmount = 15;
     [SerializeField] private bool shouldHitCaster = false;
 
 
     #region GetSetters
-    public float KnockBackAmount
+    public int DamageAmount
     {
         get
         {
-            return knockBackAmount;
+            return damageAmount;
         }
     }
+
     public bool ShouldHitCaster
     {
         get
@@ -26,5 +27,4 @@ public class KnockbackOnImpactAspect : ObjectAspect {
         }
     }
     #endregion
-
 }
