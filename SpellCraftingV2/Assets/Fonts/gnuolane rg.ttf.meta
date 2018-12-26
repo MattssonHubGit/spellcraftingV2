@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 32272ddec43c3d34982fe779fd795cc3
+timeCreated: 1545832030
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Gnuolane
+  fontNames:
+  - Gnuolane
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
