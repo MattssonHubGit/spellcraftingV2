@@ -20,6 +20,10 @@ public class MethodRune : Rune
         {
             return behaviour;
         }
+        set
+        {
+            behaviour = value;
+        }
     }
 
     public List<BehaviourModAspect> Modifiers
@@ -27,6 +31,10 @@ public class MethodRune : Rune
         get
         {
             return modifiers;
+        }
+        set
+        {
+            modifiers = value;
         }
     }
     #endregion

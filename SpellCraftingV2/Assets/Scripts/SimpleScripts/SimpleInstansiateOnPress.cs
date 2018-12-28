@@ -18,9 +18,10 @@ public class SimpleInstansiateOnPress : MonoBehaviour {
 
     private void Create()
     {
-        GameObject obj = Instantiate(prefab, this.transform.position, Quaternion.identity);
-
-
+        if (prefab != null)
+        {
+            GameObject obj = Instantiate(prefab, this.transform.position, Quaternion.identity);
+        }
     }
 
 }

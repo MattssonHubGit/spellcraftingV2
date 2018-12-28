@@ -30,6 +30,11 @@ public class PlayerController : LivingEntity
     private KnockbackReceiver kbr;
     #endregion
 
+    #region Inventory
+    [Header("Inventory")]
+    [SerializeField] private InventoryManager playerInventory;
+    #endregion 
+
     #region Debugging
     [Header("Debugging")]
     [SerializeField] private bool debugMode = false;

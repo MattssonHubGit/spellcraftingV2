@@ -14,7 +14,7 @@ MonoBehaviour:
   itemName: test spell
   itemID: 1
   bagable: 1
-  inventoryIcon: {fileID: 0}
+  inventoryIcon: {fileID: 21300000, guid: 27ae3a906e36b4045a5fc0881302b1a5, type: 3}
   worldMesh: {fileID: 0}
   worldMaterial: {fileID: 0}
   rite: {fileID: 11400000, guid: 06c0703a022dfe743b4aa8b78c6b558f, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   itemName: Create At Staff
   itemID: 5
   bagable: 1
-  inventoryIcon: {fileID: 0}
+  inventoryIcon: {fileID: 21300000, guid: f0823b48ded210540a3b3ce6523baf1c, type: 3}
   worldMesh: {fileID: 0}
   worldMaterial: {fileID: 0}
   Caster: {fileID: 0}

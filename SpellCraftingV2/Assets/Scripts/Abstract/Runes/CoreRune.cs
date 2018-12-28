@@ -18,6 +18,10 @@ public class CoreRune : Rune {
         {
             return spellObject;
         }
+        set
+        {
+            spellObject = value;
+        }
     }
 
     public List<CoreModAspect> Modifiers
@@ -25,6 +29,10 @@ public class CoreRune : Rune {
         get
         {
             return modifiers;
+        }
+        set
+        {
+            modifiers = value;
         }
     }
     #endregion

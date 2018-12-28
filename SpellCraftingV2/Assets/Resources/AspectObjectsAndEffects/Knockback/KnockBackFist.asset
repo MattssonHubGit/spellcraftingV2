@@ -14,7 +14,7 @@ MonoBehaviour:
   itemName: 
   itemID: 0
   bagable: 1
-  inventoryIcon: {fileID: 0}
+  inventoryIcon: {fileID: 21300000, guid: c12cd1c3e5347654b8d6320e0f44463c, type: 3}
   worldMesh: {fileID: 0}
   worldMaterial: {fileID: 0}
   Caster: {fileID: 0}

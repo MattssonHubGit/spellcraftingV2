@@ -14,7 +14,7 @@ MonoBehaviour:
   itemName: 
   itemID: 0
   bagable: 1
-  inventoryIcon: {fileID: 0}
+  inventoryIcon: {fileID: 21300000, guid: 668f36f5d0eeead49b365a0e108efaf7, type: 3}
   worldMesh: {fileID: 0}
   worldMaterial: {fileID: 0}
   Caster: {fileID: 0}
@@ -27,5 +27,6 @@ MonoBehaviour:
   rotationSpeedY: 0
   rotationSpeedZ: 0
   destroyOnFirstImpact: 1
+  registerCasterAsImpact: 0
   destroyOnXthImpact: 0
   destroyAfterRealTime: 15

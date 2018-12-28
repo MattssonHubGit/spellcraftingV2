@@ -11,9 +11,9 @@ public abstract class Item : ScriptableObject
     [SerializeField] protected int itemID;
     [SerializeField] protected bool bagable = true;
     [Space]
-    [SerializeField] protected Sprite inventoryIcon;
-    [SerializeField] protected Mesh worldMesh;
-    [SerializeField] protected Material worldMaterial;
+    [SerializeField] public Sprite inventoryIcon;
+    [SerializeField] public Mesh worldMesh;
+    [SerializeField] public Material worldMaterial;
 
     protected virtual void InWorldAnimation(){}
     protected virtual void PickUp(){}

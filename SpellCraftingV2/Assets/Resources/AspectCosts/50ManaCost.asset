@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8dd0a5530441384e92d1b7e2d19a352, type: 3}
+  m_Name: 50ManaCost
+  m_EditorClassIdentifier: 
+  itemName: Medium Mana Cost
+  itemID: 0
+  bagable: 1
+  inventoryIcon: {fileID: 21300000, guid: 8ae031a83a807a6488b6c1e6a0a0a21c, type: 3}
+  worldMesh: {fileID: 0}
+  worldMaterial: {fileID: 0}
+  Caster: {fileID: 0}
+  costType: 1
+  costAmount: 50
+  Rune: {fileID: 0}

@@ -21,6 +21,10 @@ public class RiteRune : Rune {
         {
             return activasion;
         }
+        set
+        {
+            activasion = value;
+        }
     }
 
     public CostAspect Cost
@@ -28,6 +32,10 @@ public class RiteRune : Rune {
         get
         {
             return cost;
+        }
+        set
+        {
+            cost = value;
         }
     }
 
@@ -49,6 +57,6 @@ public class RiteRune : Rune {
 
     public override void UseItem()
     {
-        Debug.Log("MethodRune UseItem not implemented yet");
+        Debug.Log("RiteRune UseItem not implemented yet");
     }
 }
