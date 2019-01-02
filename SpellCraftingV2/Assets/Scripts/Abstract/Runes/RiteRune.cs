@@ -58,16 +58,18 @@ public class RiteRune : Rune
 
     public override void UseItem(Item item)
     {
+        PageCrafting cachePage = CraftingPanels.Instance.page;
+
         //if in player inventory and crafting tile is open, place in crafting tile
         if (item.isInPlayerInventory == true)
         {
             if (CraftingPanels.CraftingUIEnabled == true)
             {
-                if (CraftingPanels.Instance.page.riteSlot.myItem == null)
+                if (cachePage.riteSlot.myItem == null)
                 {
-                    CraftingPanels.Instance.page.riteSlot.myItem = item;
-                    CraftingPanels.Instance.page.riteSlot.myImage.sprite = inventoryIcon;
-                    CraftingPanels.Instance.page.riteSlot.myImage.color = Color.white;
+                    cachePage.riteSlot.myItem = item;
+                    cachePage.riteSlot.myImage.sprite = inventoryIcon;
+                    cachePage.riteSlot.myImage.color = Color.white;
                     GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.RemoveItem(item);
                 }
             }
@@ -76,16 +78,24 @@ public class RiteRune : Rune
         {
             if (CraftingPanels.CraftingUIEnabled == true)
             {
-                if (CraftingPanels.Instance.page.riteSlot.myItem == item)
+                if (cachePage.riteSlot.myItem == item)
                 {
-                    CraftingPanels.Instance.page.riteSlot.myItem = null;
-                    CraftingPanels.Instance.page.riteSlot.myImage.color = new Color(1, 1, 1, 0);
-                    CraftingPanels.Instance.page.riteSlot.myImage.sprite = null;
+                    cachePage.riteSlot.myItem = null;
+                    cachePage.riteSlot.myImage.color = new Color(1, 1, 1, 0);
+                    cachePage.riteSlot.myImage.sprite = null;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.AddItem(item, Camera.main.gameObject, false);
+                }
+
+                RiteCrafting cacheRite = CraftingPanels.Instance.rite;
+                if (cacheRite.runeOutputSlot.myItem == item)
+                {
+                    cacheRite.runeOutputSlot.myItem = null;
+                    cacheRite.runeOutputSlot.myImage.color = new Color(1, 1, 1, 0);
+                    cacheRite.runeOutputSlot.myImage.sprite = null;
                     GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.AddItem(item, Camera.main.gameObject, false);
                 }
             }
 
         }
-
     }
 }

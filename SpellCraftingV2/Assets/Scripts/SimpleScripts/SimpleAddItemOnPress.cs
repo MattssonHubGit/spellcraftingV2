@@ -5,7 +5,7 @@ using UnityEngine;
 public class SimpleAddItemOnPress : MonoBehaviour {
 
     [SerializeField] private InventoryManager inventory;
-    [SerializeField] private ItemData itemToAdd;
+    [SerializeField] private List<ItemData> itemsToAdd = new List<ItemData>();
     [SerializeField] private GameObject itemPrefab;
 
     [SerializeField] private KeyCode key = KeyCode.Keypad3;
@@ -20,13 +20,15 @@ public class SimpleAddItemOnPress : MonoBehaviour {
 
     private void Add()
     {
-        if (itemToAdd != null || inventory != null)
+        if (inventory != null)
         {
-            GameObject _obj = Instantiate(itemPrefab, new Vector3(100000, 100000, 100000), Quaternion.identity, this.transform);
-            Item _item = _obj.GetComponent<Item>();
-            _item.myItemData = itemToAdd;
-
-            inventory.AddItem(_item, this.gameObject, false);
+            for (int i = 0; i < itemsToAdd.Count; i++)
+            {
+                GameObject _obj = Instantiate(itemPrefab, new Vector3(100000, 100000, 100000), Quaternion.identity, this.transform);
+                Item _item = _obj.GetComponent<Item>();
+                _item.myItemData = itemsToAdd[i];
+                inventory.AddItem(_item, this.gameObject, false);
+            }
         }
     }
 }

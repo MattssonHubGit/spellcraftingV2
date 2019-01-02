@@ -9,6 +9,7 @@ public class PageCrafting : MonoBehaviour {
     public InventorySlot methodSlot;
     public InventorySlot pageOutputSlot;
     public Sprite pageSprite;
+    [SerializeField] private GameObject itemPrefab;
 
     public void Craft()
     {
@@ -30,14 +31,15 @@ public class PageCrafting : MonoBehaviour {
         {
             _methodReady = true;
         }
-        if (pageOutputSlot == null)
+        if (pageOutputSlot.myItem == null)
         {
             _outputEmpty = true;
         }
 
+        //Debug.Log("rite: " + _riteReady.ToString() + " core: " + _coreReady.ToString() + " method: " + _methodReady.ToString() + " empty output: " + _outputEmpty.ToString());
         if (_riteReady && _coreReady && _methodReady && _outputEmpty)
         {
-            //Generate new page
+            //Generate new page data
             SpellPage _data = new SpellPage();
             _data.Rite = riteSlot.myItem.myItemData as RiteRune;
             _data.Core = coreSlot.myItem.myItemData as CoreRune;
@@ -45,10 +47,14 @@ public class PageCrafting : MonoBehaviour {
             _data.inventoryIcon = pageSprite;
             _data.name = "SpellPage: Unfoldered";
 
-
-            Item _output = new Item();
-            _output.gameObject.name = "Page";
-            _output.myItemData = _data;
+            //Generate item
+             GameObject _itemObj = Instantiate(itemPrefab, new Vector3(100000, 100000, 100000), Quaternion.identity);
+            _itemObj.name = "Page";
+             Item _output = _itemObj.GetComponent<Item>();
+             _output.myItemData = _data;
+            _output.isInPlayerInventory = false;
+            _output.GFXParent.gameObject.SetActive(false);
+            _output.myCollider.enabled = false;
 
             //Put it into UI
             pageOutputSlot.myItem = _output;

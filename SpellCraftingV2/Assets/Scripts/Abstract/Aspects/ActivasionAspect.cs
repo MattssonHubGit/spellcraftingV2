@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class ActivasionAspect : Aspect
 {
-    //TODO: Make the aspect enter/exit the crafting/inventory
+    //TODO:  Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
 
 
-        [HideInInspector] public RiteRune Rune;
+    [HideInInspector] public RiteRune Rune;
 
     /// <summary>
     /// Check against the cost aspect if the caster succeeds with the payment, if it returns true - enter Cast, else enter Cancel.
@@ -75,8 +75,37 @@ public abstract class ActivasionAspect : Aspect
         //return new GameObject("Created from helpfunction in ActivasionAspect");
     }
 
-    public override void UseItem()
+    public override void UseItem(Item item)
     {
-        Debug.Log("UseItem() not implemented in ActivasionAspect");
+        RiteCrafting cache = CraftingPanels.Instance.rite;
+
+        //if in player inventory and crafting tile is open, place in crafting tile
+        if (item.isInPlayerInventory == true)
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                if (cache.activationSlot.myItem == null)
+                {
+                    cache.activationSlot.myItem = item;
+                    cache.activationSlot.myImage.sprite = inventoryIcon;
+                    cache.activationSlot.myImage.color = Color.white;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.RemoveItem(item);
+                }
+            }
+        }
+        else
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                if (CraftingPanels.Instance.rite.activationSlot.myItem == item)
+                {
+                    cache.activationSlot.myItem = null;
+                    cache.activationSlot.myImage.color = new Color(1, 1, 1, 0);
+                    cache.activationSlot.myImage.sprite = null;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.AddItem(item, Camera.main.gameObject, false);
+                }
+            }
+
+        }
     }
 }

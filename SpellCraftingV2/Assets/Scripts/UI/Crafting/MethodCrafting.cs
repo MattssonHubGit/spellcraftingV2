@@ -8,6 +8,7 @@ public class MethodCrafting : MonoBehaviour {
     public InventorySlot[] modSlots = new InventorySlot[0];
     public InventorySlot runeOutputSlot;
     public Sprite methodSprite;
+    [SerializeField] private GameObject itemPrefab;
 
     public void Craft()
     {
@@ -19,14 +20,14 @@ public class MethodCrafting : MonoBehaviour {
         {
             _behaviourReady = true;
         }
-        if (runeOutputSlot == null)
+        if (runeOutputSlot.myItem == null)
         {
             _outputEmpty = true;
         }
 
         if (_behaviourReady && _outputEmpty)
         {
-            //Generate new page
+            //Generate new method rune data
             MethodRune _data = new MethodRune();
             _data.Behaviour = behaviourSlot.myItem.myItemData as BehaviourAspect;
             for (int i = 0; i < modSlots.Length; i++)
@@ -43,9 +44,15 @@ public class MethodCrafting : MonoBehaviour {
             _data.inventoryIcon = methodSprite;
             _data.name = "MethodRune: Unfoldered";
 
-            Item _output = new Item();
-            _output.gameObject.name = "MethodRune";
+            //Genereate new item
+            GameObject _itemObj = Instantiate(itemPrefab, new Vector3(100000, 100000, 100000), Quaternion.identity, this.transform);
+            _itemObj.name = "CoreRune";
+            Item _output = _itemObj.GetComponent<Item>();
             _output.myItemData = _data;
+            _output.isInPlayerInventory = false;
+            _output.GFXParent.gameObject.SetActive(false);
+            _output.myCollider.enabled = false;
+
 
             //Put it into UI
             runeOutputSlot.myItem = _output;

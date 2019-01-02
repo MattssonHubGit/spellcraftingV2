@@ -39,9 +39,46 @@ public class MethodRune : Rune
     }
     #endregion
 
-    public override void UseItem()
+    public override void UseItem(Item item)
     {
-        Debug.Log("MethodRune UseItem not implemented yet");
+        PageCrafting cachePage = CraftingPanels.Instance.page;
+
+        //if in player inventory and crafting tile is open, place in crafting tile
+        if (item.isInPlayerInventory == true)
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                if (cachePage.methodSlot.myItem == null)
+                {
+                    cachePage.methodSlot.myItem = item;
+                    cachePage.methodSlot.myImage.sprite = inventoryIcon;
+                    cachePage.methodSlot.myImage.color = Color.white;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.RemoveItem(item);
+                }
+            }
+        }
+        else
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                if (cachePage.methodSlot.myItem == item)
+                {
+                    cachePage.methodSlot.myItem = null;
+                    cachePage.methodSlot.myImage.color = new Color(1, 1, 1, 0);
+                    cachePage.methodSlot.myImage.sprite = null;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.AddItem(item, Camera.main.gameObject, false);
+                }
+                MethodCrafting cacheMethod = CraftingPanels.Instance.method;
+                if (cacheMethod.runeOutputSlot.myItem == item)
+                {
+                    cacheMethod.runeOutputSlot.myItem = null;
+                    cacheMethod.runeOutputSlot.myImage.color = new Color(1, 1, 1, 0);
+                    cacheMethod.runeOutputSlot.myImage.sprite = null;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.AddItem(item, Camera.main.gameObject, false);
+                }
+            }
+
+        }
     }
 
 

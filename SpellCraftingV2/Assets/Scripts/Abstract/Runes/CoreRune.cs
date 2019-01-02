@@ -37,8 +37,45 @@ public class CoreRune : Rune {
     }
     #endregion
 
-    public override void UseItem()
+    public override void UseItem(Item item)
     {
-        Debug.Log("MethodRune UseItem not implemented yet");
+        PageCrafting cachePage = CraftingPanels.Instance.page;
+     
+        //if in player inventory and crafting tile is open, place in crafting tile
+        if (item.isInPlayerInventory == true)
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                if (cachePage.coreSlot.myItem == null)
+                {
+                    cachePage.coreSlot.myItem = item;
+                    cachePage.coreSlot.myImage.sprite = inventoryIcon;
+                    cachePage.coreSlot.myImage.color = Color.white;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.RemoveItem(item);
+                }
+            }
+        }
+        else
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                if (cachePage.coreSlot.myItem == item)
+                {
+                    cachePage.coreSlot.myItem = null;
+                    cachePage.coreSlot.myImage.color = new Color(1, 1, 1, 0);
+                    cachePage.coreSlot.myImage.sprite = null;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.AddItem(item, Camera.main.gameObject, false);
+                }
+
+                CoreCrafting cacheCore = CraftingPanels.Instance.core;
+                if (cacheCore.runeOutputSlot.myItem == item)
+                {
+                    cacheCore.runeOutputSlot.myItem = null;
+                    cacheCore.runeOutputSlot.myImage.color = new Color(1, 1, 1, 0);
+                    cacheCore.runeOutputSlot.myImage.sprite = null;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.AddItem(item, Camera.main.gameObject, false);
+                }
+            }
+        }
     }
 }

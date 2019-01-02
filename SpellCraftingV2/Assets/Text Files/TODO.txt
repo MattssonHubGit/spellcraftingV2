@@ -1,38 +1,39 @@
 ActivasionAspect)
-Make the aspect enter/exit the crafting/inventory
-
-PlayerController)
-Add interaction with spellbook
-Smooth out resource regaining
-
-Item)
-Implement Animation() and PickUp() virtuals
+Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
 
 MethodRune)
-Implement OnUse() to add into crafting UI/Inventory
+Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
 
 RiteRune)
 Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
 
 CoreRune)
-Implement OnUse() to add into crafting UI/Inventory
-
-SpellPage)
-Implement SpellPage UseItem() to add/remove from inventory
-Add crafting functions for setting up runes
-Add interaction with SpellBook
-
-CreateAtCastPoint)
-Implement Cast() to create the Core and apply the Method scripts onto it.
+Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
 
 CostAspect)
-Make the aspect enter/exit the crafting/inventory
+Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
+BehaviourAspect)
+
+BehaviourModAspect)
+Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
+
+CoreModAspect)
+Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
+
+ObjectAspect)
+Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
+
+-------------------------------------------------------------------------------------------------------------
+
+SpellPage)
+Add interaction with SpellBook
+
+PlayerController)
+Add interaction with spellbook
+Smooth out resource regaining
 
 LivingEntity)
 Create and implement a default version of a IResourceDamagable interface
-
-BehaviourAspect)
-Make the aspect enter/exit the crafting/inventory
 
 ProjectileAspect)
 TakeVariableModification should be implemented to change personal variables
@@ -40,12 +41,3 @@ TakeVariableModification should be implemented to change personal variables
 Projectile)
 Implement ModMyVariables()
 
-BehaviourModAspect)
-Add override for UseItem()
-Make the aspect enter/exit the crafting/inventory and add additional mod slots
-
-CoreModAspect)
-Make the aspect enter/exit the crafting/inventory and add additional mod slots
-
-ObjectAspect)
-Make the aspect enter/exit the crafting/inventory

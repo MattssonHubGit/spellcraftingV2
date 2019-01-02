@@ -8,6 +8,7 @@ public class CoreCrafting : MonoBehaviour {
     public InventorySlot[] modSlots = new InventorySlot[0];
     public InventorySlot runeOutputSlot;
     public Sprite coreSprite;
+    [SerializeField] private GameObject itemPrefab;
 
     public void Craft()
     {
@@ -19,14 +20,14 @@ public class CoreCrafting : MonoBehaviour {
         {
             _objectReady = true;
         }
-        if (runeOutputSlot == null)
+        if (runeOutputSlot.myItem == null)
         {
             _outputEmpty = true;
         }
 
         if (_objectReady && _outputEmpty)
         {
-            //Generate new page
+            //Generate new core data
             CoreRune _data = new CoreRune();
             _data.SpellObject = objectSlot.myItem.myItemData as ObjectAspect;
             for (int i = 0; i < modSlots.Length; i++)
@@ -43,9 +44,14 @@ public class CoreCrafting : MonoBehaviour {
             _data.inventoryIcon = coreSprite;
             _data.name = "CoreRune: Unfoldered";
 
-            Item _output = new Item();
-            _output.gameObject.name = "CoreRune";
+            //Generate new item
+            GameObject _itemObj = Instantiate(itemPrefab, new Vector3(100000, 100000, 100000), Quaternion.identity, this.transform);
+            _itemObj.name = "CoreRune";
+            Item _output = _itemObj.GetComponent<Item>();
             _output.myItemData = _data;
+            _output.isInPlayerInventory = false;
+            _output.GFXParent.gameObject.SetActive(false);
+            _output.myCollider.enabled = false;
 
             //Put it into UI
             runeOutputSlot.myItem = _output;

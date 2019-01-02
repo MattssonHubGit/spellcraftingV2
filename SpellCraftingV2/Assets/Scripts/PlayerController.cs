@@ -39,7 +39,7 @@ public class PlayerController : LivingEntity
     #region Debugging
     [Header("Debugging")]
     [SerializeField] private bool debugMode = false;
-    [SerializeField] private SpellPage mySpell;
+    [SerializeField] public SpellPage mySpell;
     #endregion
 
     #region GetSetter

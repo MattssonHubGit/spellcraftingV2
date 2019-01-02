@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BehaviourModAspect : Aspect
 {
 
-    //TODO: Verify that the order of GetComponents<>() returns the latest added Type at the end of the array
+    //TODO:  Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
 
     [Header("Behaviour Mod Aspect")]
     [SerializeField] protected BehaviourAspect.BehaviourType modForType;
@@ -61,6 +61,49 @@ public abstract class BehaviourModAspect : Aspect
             {
                 Debug.LogError("BehaviourScript string is not the name of a LesserBehaviour");
             }
+        }
+    }
+
+    public override void UseItem(Item item)
+    {
+        MethodCrafting cache = CraftingPanels.Instance.method;
+
+        //if in player inventory and crafting tile is open, place in crafting tile
+        if (item.isInPlayerInventory == true)
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                for (int i = 0; i < cache.modSlots.Length; i++)
+                {
+                    if (cache.modSlots[i].myItem == null)
+                    {
+                        cache.modSlots[i].myItem = item;
+                        cache.modSlots[i].myImage.sprite = inventoryIcon;
+                        cache.modSlots[i].myImage.color = Color.white;
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.RemoveItem(item);
+                        break;
+                    }
+                }
+
+            }
+        }
+        else
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                for (int i = 0; i < CraftingPanels.Instance.core.modSlots.Length; i++)
+                {
+                    if (cache.modSlots[i].myItem == item)
+                    {
+                        cache.modSlots[i].myItem = null;
+                        cache.modSlots[i].myImage.color = new Color(1, 1, 1, 0);
+                        cache.modSlots[i].myImage.sprite = null;
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.AddItem(item, Camera.main.gameObject, false);
+                    }
+                }
+
+            }
+
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ObjectAspect : Aspect
 {
-    //TODO: Make the aspect enter/exit the crafting/inventory
+    //TODO:  Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
 
     [Header("Object Aspect")]
     [SerializeField] protected GameObject objectPrefab;
@@ -51,8 +51,37 @@ public abstract class ObjectAspect : Aspect
         }
     }
 
-    public override void UseItem()
+    public override void UseItem(Item item)
     {
-        Debug.Log("UseItem() not implemented in ObjectAspect");
+        CoreCrafting cache = CraftingPanels.Instance.core;
+
+        //if in player inventory and crafting tile is open, place in crafting tile
+        if (item.isInPlayerInventory == true)
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                if (cache.objectSlot.myItem == null)
+                {
+                    cache.objectSlot.myItem = item;
+                    cache.objectSlot.myImage.sprite = inventoryIcon;
+                    cache.objectSlot.myImage.color = Color.white;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.RemoveItem(item);
+                }
+            }
+        }
+        else
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                if (cache.objectSlot.myItem == item)
+                {
+                    cache.objectSlot.myItem = null;
+                    cache.objectSlot.myImage.color = new Color(1, 1, 1, 0);
+                    cache.objectSlot.myImage.sprite = null;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.AddItem(item, Camera.main.gameObject, false);
+                }
+            }
+
+        }
     }
 }

@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class SpellPage : ItemData {
 
-    //TODO: Implement SpellPage UseItem() to add/remove from inventory
-    //Add crafting functions for setting up runes
+    //TODO: Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
     //Add interaction with SpellBook
 
     [Header("Runes")]
@@ -99,11 +98,31 @@ public class SpellPage : ItemData {
         rite.InciteSpell();
     }
 
-    #region Interface Implementation
-    public override void UseItem()
+    public override void UseItem(Item item)
     {
-        Debug.Log("SpellPage UseItem not implemented yet");
+        PageCrafting cachePage = CraftingPanels.Instance.page;
+
+        //if in player inventory and crafting tile is open, place in crafting tile
+        if (item.isInPlayerInventory == true)
+        {
+            Debug.Log("New spell equipped!");
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().mySpell = this;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.RemoveItem(item);
+        }
+        else
+        {
+            if (CraftingPanels.CraftingUIEnabled == true)
+            {
+                if (cachePage.pageOutputSlot.myItem == item)
+                {
+                    cachePage.pageOutputSlot.myItem = null;
+                    cachePage.pageOutputSlot.myImage.color = new Color(1, 1, 1, 0);
+                    cachePage.pageOutputSlot.myImage.sprite = null;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.AddItem(item, Camera.main.gameObject, false);
+                }
+            }
+
+        }
     }
-    #endregion
 
 }
