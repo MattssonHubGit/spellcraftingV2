@@ -33,6 +33,7 @@ public class PlayerController : LivingEntity
     #region Inventory
     [Header("Inventory")]
     [SerializeField] private InventoryManager playerInventory;
+    [SerializeField] public GameObject inWorldItemPrefab;
     #endregion 
 
     #region Debugging
@@ -41,6 +42,15 @@ public class PlayerController : LivingEntity
     [SerializeField] private SpellPage mySpell;
     #endregion
 
+    #region GetSetter
+    public InventoryManager PlayerInventory
+    {
+        get
+        {
+            return playerInventory;
+        }
+    }
+    #endregion
 
     //Methods
     private void Awake()
@@ -59,6 +69,7 @@ public class PlayerController : LivingEntity
 
         //UI
         HealthAndManaBarDisplay();
+        ToggleCraftingInterface();
 
         //Resources
         ManaRegen();
@@ -165,6 +176,29 @@ public class PlayerController : LivingEntity
         {
             img.fillAmount = Mathf.Lerp(_startAmount, targerAmount, 0.05f);
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    /// <summary>
+    /// This is temporary and should not be accesible in-game
+    /// </summary>
+    private void ToggleCraftingInterface()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            //If interface is closed, open it and vice versa
+            if (CraftingPanels.CraftingUIEnabled == false)
+            {
+                CraftingPanels.CraftingUIEnabled = true;
+                CraftingPanels.Instance.gameObject.SetActive(true);
+                playerInventory.gameObject.SetActive(true);
+            }
+            else
+            {
+                CraftingPanels.CraftingUIEnabled = false;
+                CraftingPanels.Instance.gameObject.SetActive(false);
+                playerInventory.gameObject.SetActive(false);
+            }
         }
     }
     #endregion

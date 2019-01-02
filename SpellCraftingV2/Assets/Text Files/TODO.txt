@@ -12,8 +12,7 @@ MethodRune)
 Implement OnUse() to add into crafting UI/Inventory
 
 RiteRune)
-Implement OnUse() to add into crafting UI/Inventory
-Implement InciteSpell() to start casting
+Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
 
 CoreRune)
 Implement OnUse() to add into crafting UI/Inventory

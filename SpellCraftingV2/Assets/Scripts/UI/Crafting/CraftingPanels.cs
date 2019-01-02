@@ -9,7 +9,7 @@ public class CraftingPanels : MonoBehaviour {
     public MethodCrafting method;
     public PageCrafting page;
 
-    public static bool CraftingUIEnabled = false;
+    public static bool CraftingUIEnabled = true;
 
     #region Singleton
     //Singleton

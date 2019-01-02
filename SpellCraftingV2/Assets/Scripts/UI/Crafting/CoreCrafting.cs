@@ -27,25 +27,29 @@ public class CoreCrafting : MonoBehaviour {
         if (_objectReady && _outputEmpty)
         {
             //Generate new page
-            CoreRune _output = new CoreRune();
-            _output.SpellObject = objectSlot.myItem as ObjectAspect;
+            CoreRune _data = new CoreRune();
+            _data.SpellObject = objectSlot.myItem.myItemData as ObjectAspect;
             for (int i = 0; i < modSlots.Length; i++)
             {
                 if (modSlots[i].myItem != null)
                 {
-                    _output.Modifiers.Add(modSlots[i].myItem as CoreModAspect);
+                    _data.Modifiers.Add(modSlots[i].myItem.myItemData as CoreModAspect);
                 }
                 else
                 {
                     break;
                 }
             }
-            _output.inventoryIcon = coreSprite;
-            _output.name = "CoreRune: Unfoldered";
+            _data.inventoryIcon = coreSprite;
+            _data.name = "CoreRune: Unfoldered";
+
+            Item _output = new Item();
+            _output.gameObject.name = "CoreRune";
+            _output.myItemData = _data;
 
             //Put it into UI
             runeOutputSlot.myItem = _output;
-            runeOutputSlot.myImage.sprite = _output.inventoryIcon;
+            runeOutputSlot.myImage.sprite = _data.inventoryIcon;
             runeOutputSlot.myImage.color = Color.white;
 
             //Remove behaviouraspect

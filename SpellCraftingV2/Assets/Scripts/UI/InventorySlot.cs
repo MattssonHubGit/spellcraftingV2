@@ -15,7 +15,7 @@ public class InventorySlot : MonoBehaviour {
         //Only use if item is available
         if (myItem != null)
         {
-            myItem.UseItem();
+            myItem.myItemData.UseItem(myItem);
         }
     }
 }

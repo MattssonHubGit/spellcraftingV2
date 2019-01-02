@@ -33,15 +33,19 @@ public class RiteCrafting : MonoBehaviour {
         if (_costReady && _activasionReady && _outputEmpty)
         {
             //Generate new rite rune
-            RiteRune _output = new RiteRune();
-            _output.Cost = costSlot.myItem as CostAspect;
-            _output.Activasion = activationSlot.myItem as ActivasionAspect;
-            _output.inventoryIcon = riteSprite;
-            _output.name = "RiteRune: Unfoldered";
+            RiteRune _data = new RiteRune();
+            _data.Cost = costSlot.myItem.myItemData as CostAspect;
+            _data.Activasion = activationSlot.myItem.myItemData as ActivasionAspect;
+            _data.inventoryIcon = riteSprite;
+            _data.name = "RiteRune: Unfoldered";
+
+            Item _output = new Item();
+            _output.gameObject.name = "RiteRune";
+            _output.myItemData = _data;
 
             //Put it into UI
             runeOutputSlot.myItem = _output;
-            runeOutputSlot.myImage.sprite = _output.inventoryIcon;
+            runeOutputSlot.myImage.sprite = _data.inventoryIcon;
             runeOutputSlot.myImage.color = Color.white;
 
             //Remove costaspect

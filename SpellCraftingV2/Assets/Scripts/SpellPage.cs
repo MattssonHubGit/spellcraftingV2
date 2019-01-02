@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu()]
-public class SpellPage : Item {
+public class SpellPage : ItemData {
 
     //TODO: Implement SpellPage UseItem() to add/remove from inventory
     //Add crafting functions for setting up runes

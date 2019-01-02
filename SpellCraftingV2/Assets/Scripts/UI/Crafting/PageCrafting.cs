@@ -38,16 +38,21 @@ public class PageCrafting : MonoBehaviour {
         if (_riteReady && _coreReady && _methodReady && _outputEmpty)
         {
             //Generate new page
-            SpellPage _output = new SpellPage();
-            _output.Rite = riteSlot.myItem as RiteRune;
-            _output.Core = coreSlot.myItem as CoreRune;
-            _output.Method = methodSlot.myItem as MethodRune;
-            _output.inventoryIcon = pageSprite;
-            _output.name = "SpellPage: Unfoldered";
+            SpellPage _data = new SpellPage();
+            _data.Rite = riteSlot.myItem.myItemData as RiteRune;
+            _data.Core = coreSlot.myItem.myItemData as CoreRune;
+            _data.Method = methodSlot.myItem.myItemData as MethodRune;
+            _data.inventoryIcon = pageSprite;
+            _data.name = "SpellPage: Unfoldered";
+
+
+            Item _output = new Item();
+            _output.gameObject.name = "Page";
+            _output.myItemData = _data;
 
             //Put it into UI
             pageOutputSlot.myItem = _output;
-            pageOutputSlot.myImage.sprite = _output.inventoryIcon;
+            pageOutputSlot.myImage.sprite = _data.inventoryIcon;
             pageOutputSlot.myImage.color = Color.white;
 
             //Remove riterune

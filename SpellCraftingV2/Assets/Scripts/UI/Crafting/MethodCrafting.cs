@@ -27,25 +27,29 @@ public class MethodCrafting : MonoBehaviour {
         if (_behaviourReady && _outputEmpty)
         {
             //Generate new page
-            MethodRune _output = new MethodRune();
-            _output.Behaviour = behaviourSlot.myItem as BehaviourAspect;
+            MethodRune _data = new MethodRune();
+            _data.Behaviour = behaviourSlot.myItem.myItemData as BehaviourAspect;
             for (int i = 0; i < modSlots.Length; i++)
             {
                 if (modSlots[i].myItem != null)
                 {
-                    _output.Modifiers.Add(modSlots[i].myItem as BehaviourModAspect);
+                    _data.Modifiers.Add(modSlots[i].myItem.myItemData as BehaviourModAspect);
                 }
                 else
                 {
                     break;
                 }
             }
-            _output.inventoryIcon = methodSprite;
-            _output.name = "MethodRune: Unfoldered";
+            _data.inventoryIcon = methodSprite;
+            _data.name = "MethodRune: Unfoldered";
+
+            Item _output = new Item();
+            _output.gameObject.name = "MethodRune";
+            _output.myItemData = _data;
 
             //Put it into UI
             runeOutputSlot.myItem = _output;
-            runeOutputSlot.myImage.sprite = _output.inventoryIcon;
+            runeOutputSlot.myImage.sprite = _data.inventoryIcon;
             runeOutputSlot.myImage.color = Color.white;
 
             //Remove behaviouraspect

@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Collection Class for all Aspect types
 /// </summary>
-public abstract class Aspect : Item {
+public abstract class Aspect : ItemData {
 
     public LivingEntity Caster;
 	

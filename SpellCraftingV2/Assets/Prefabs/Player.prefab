@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 143189383907497556}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -918,6 +918,9 @@ MonoBehaviour:
   moveLeftKey: 97
   rotationSpeed: 500
   regenAmount: 15
+  playerInventory: {fileID: 0}
+  inWorldItemPrefab: {fileID: 1804287716635332, guid: 0459df55db587ad4e86d462add9f363f,
+    type: 2}
   debugMode: 0
   mySpell: {fileID: 11400000, guid: b2a7c72d8a1b97941b75206993e91e53, type: 2}
 --- !u!143 &143189383907497556
