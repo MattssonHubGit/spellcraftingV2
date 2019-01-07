@@ -1,3 +1,7 @@
+Add a caster/owner tracker script and add it when creating a spellobject
+	Do this because scriptable objects aren't instances
+
+-------------------------------------------------------------------------------------------------------------
 ActivasionAspect)
 Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
 
