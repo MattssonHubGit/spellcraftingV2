@@ -11,8 +11,7 @@ public abstract class ObjectAspect : Aspect
     [SerializeField] private string InnateEffectScript = "";
     [SerializeField] private ScriptableObject effectData;
 
-
-    [HideInInspector] public CoreRune Rune;
+    
 
     #region GetSetters
     public GameObject ObjectPrefab
@@ -42,7 +41,6 @@ public abstract class ObjectAspect : Aspect
                 //Add the class and set it's data to a subclass of ObjectAspect
                 InnateEffect thisEffect = (InnateEffect)applyTo.AddComponent(mType);
                 thisEffect.data = effectData;
-                thisEffect.caster = Caster;
             }
             else
             {

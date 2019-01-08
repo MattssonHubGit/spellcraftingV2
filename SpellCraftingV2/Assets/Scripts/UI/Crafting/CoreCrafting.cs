@@ -8,7 +8,7 @@ public class CoreCrafting : MonoBehaviour {
     public InventorySlot[] modSlots = new InventorySlot[0];
     public InventorySlot runeOutputSlot;
     public Sprite coreSprite;
-    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private GameObject runePrefab;
 
     public void Craft()
     {
@@ -29,6 +29,9 @@ public class CoreCrafting : MonoBehaviour {
         {
             //Generate new core data
             CoreRune _data = new CoreRune();
+           
+            _data.inventoryIcon = coreSprite;
+            _data.name = "CoreRune: Unfoldered";
             _data.SpellObject = objectSlot.myItem.myItemData as ObjectAspect;
             for (int i = 0; i < modSlots.Length; i++)
             {
@@ -41,17 +44,27 @@ public class CoreCrafting : MonoBehaviour {
                     break;
                 }
             }
-            _data.inventoryIcon = coreSprite;
-            _data.name = "CoreRune: Unfoldered";
 
             //Generate new item
-            GameObject _itemObj = Instantiate(itemPrefab, new Vector3(100000, 100000, 100000), Quaternion.identity, this.transform);
+            GameObject _itemObj = Instantiate(runePrefab, new Vector3(100000, 100000, 100000), Quaternion.identity);
             _itemObj.name = "CoreRune";
-            Item _output = _itemObj.GetComponent<Item>();
+            InWorldRune _output = _itemObj.GetComponent<InWorldRune>();
             _output.myItemData = _data;
             _output.isInPlayerInventory = false;
             _output.GFXParent.gameObject.SetActive(false);
             _output.myCollider.enabled = false;
+            _output.Object = objectSlot.myItem.myItemData as ObjectAspect;
+            for (int i = 0; i < modSlots.Length; i++)
+            {
+                if (modSlots[i].myItem != null)
+                {
+                    _output.CoreMods.Add(modSlots[i].myItem.myItemData as CoreModAspect);
+                }
+                else
+                {
+                    break;
+                }
+            }
 
             //Put it into UI
             runeOutputSlot.myItem = _output;

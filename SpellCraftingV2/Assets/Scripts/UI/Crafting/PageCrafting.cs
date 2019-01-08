@@ -9,7 +9,7 @@ public class PageCrafting : MonoBehaviour {
     public InventorySlot methodSlot;
     public InventorySlot pageOutputSlot;
     public Sprite pageSprite;
-    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private GameObject pagePrefab;
 
     public void Craft()
     {
@@ -48,13 +48,18 @@ public class PageCrafting : MonoBehaviour {
             _data.name = "SpellPage: Unfoldered";
 
             //Generate item
-             GameObject _itemObj = Instantiate(itemPrefab, new Vector3(100000, 100000, 100000), Quaternion.identity);
+             GameObject _itemObj = Instantiate(pagePrefab, new Vector3(100000, 100000, 100000), Quaternion.identity);
             _itemObj.name = "Page";
-             Item _output = _itemObj.GetComponent<Item>();
+             InWorldPage _output = _itemObj.GetComponent<InWorldPage>();
              _output.myItemData = _data;
             _output.isInPlayerInventory = false;
             _output.GFXParent.gameObject.SetActive(false);
             _output.myCollider.enabled = false;
+
+            _output.Page = _data;
+            _output.Rite = _data.Rite;
+            _output.Core = _data.Core;
+            _output.Method = _data.Method;
 
             //Put it into UI
             pageOutputSlot.myItem = _output;

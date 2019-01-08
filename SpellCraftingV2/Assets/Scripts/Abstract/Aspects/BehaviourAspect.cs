@@ -12,8 +12,7 @@ public abstract class BehaviourAspect : Aspect
     [SerializeField] protected BehaviourType behaviourType;
     [SerializeField] protected string behaviourScript = "";
 
-
-    [HideInInspector] public MethodRune Rune;
+    
 
     /// <summary>
     /// A subclass should a component on a gameobject, meaning the behaivour should apply to it's own transform.

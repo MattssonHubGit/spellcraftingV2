@@ -5889,7 +5889,7 @@ MonoBehaviour:
   methodSlot: {fileID: 114514746626971818}
   pageOutputSlot: {fileID: 114200386497374800}
   pageSprite: {fileID: 21300000, guid: 27ae3a906e36b4045a5fc0881302b1a5, type: 3}
-  itemPrefab: {fileID: 1804287716635332, guid: 0459df55db587ad4e86d462add9f363f, type: 2}
+  pagePrefab: {fileID: 1804287716635332, guid: fecfc6c41f85e1b4f9afbfa80643da7b, type: 2}
 --- !u!114 &114084134739567108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7720,7 +7720,7 @@ MonoBehaviour:
   - {fileID: 114080302649439376}
   runeOutputSlot: {fileID: 114732882062418268}
   methodSprite: {fileID: 21300000, guid: 3ab7ba4e65a70414f9b4c3147020de13, type: 3}
-  itemPrefab: {fileID: 1804287716635332, guid: 0459df55db587ad4e86d462add9f363f, type: 2}
+  runePrefab: {fileID: 1804287716635332, guid: a045e244b4efc0145a852d4d99e6ad31, type: 2}
 --- !u!114 &114277773578584086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8603,7 +8603,7 @@ MonoBehaviour:
   - {fileID: 114390540890626850}
   runeOutputSlot: {fileID: 114243135469109980}
   coreSprite: {fileID: 21300000, guid: 45d6772d14a64f44e8f686ba4cb176f8, type: 3}
-  itemPrefab: {fileID: 1804287716635332, guid: 0459df55db587ad4e86d462add9f363f, type: 2}
+  runePrefab: {fileID: 1804287716635332, guid: a045e244b4efc0145a852d4d99e6ad31, type: 2}
 --- !u!114 &114356501872113554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13445,7 +13445,7 @@ MonoBehaviour:
   costSlot: {fileID: 114789629556223842}
   activationSlot: {fileID: 114858708017976824}
   runeOutputSlot: {fileID: 114771212144897996}
-  itemPrefab: {fileID: 1804287716635332, guid: 0459df55db587ad4e86d462add9f363f, type: 2}
+  runePrefab: {fileID: 1804287716635332, guid: a045e244b4efc0145a852d4d99e6ad31, type: 2}
   riteSprite: {fileID: 21300000, guid: a5724b1c2e945e94791fc04b17e9dda5, type: 3}
 --- !u!114 &114772825742580036
 MonoBehaviour:
@@ -15227,7 +15227,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114391393509047292}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114243135469109980}
+        m_MethodName: UseMyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114881376390527794

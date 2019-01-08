@@ -13,8 +13,6 @@ public class SpellPage : ItemData {
     [SerializeField] private CoreRune core;
     [SerializeField] private MethodRune method;
 
-    private LivingEntity caster;
-
 
 
     #region Getters
@@ -57,45 +55,9 @@ public class SpellPage : ItemData {
     #endregion
 
 
-    //Debug
-    public void SetCaster(LivingEntity _caster)
+    public void CastSpell(LivingEntity _caster, InWorldPage _page)
     {
-        caster = _caster;
-    }
-
-    public void CastSpell(LivingEntity _caster)
-    {
-        rite.Page = this;
-        core.Page = this;
-        method.Page = this;
-
-        rite.Caster = _caster;
-        core.Caster = _caster;
-        method.Caster = _caster;
-
-       
-        rite.Activasion.Caster = _caster;
-        rite.Cost.Caster = _caster;
-        rite.Activasion.Rune = rite;
-        rite.Cost.Rune = rite;
-
-        core.SpellObject.Caster = _caster;
-        core.SpellObject.Rune = core;
-        for (int i = 0; i < core.Modifiers.Count; i++)
-        {
-            core.Modifiers[i].Caster = _caster;
-            core.Modifiers[i].Rune = core;
-        }
-
-        method.Behaviour.Caster = _caster;
-        method.Behaviour.Rune = method;
-        /*for (int i = 0; i < method.Modifiers.Count; i++)
-        {
-            method.Modifiers[i].Caster = _caster;
-            method.Modifiers[i].Rune = method;
-        }*/
-
-        rite.InciteSpell();
+        rite.InciteSpell(_caster, _page);
     }
 
     public override void UseItem(Item item)
@@ -106,7 +68,7 @@ public class SpellPage : ItemData {
         if (item.isInPlayerInventory == true)
         {
             Debug.Log("New spell equipped!");
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().mySpell = this;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<SpellBook>().Spell = item as InWorldPage;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory.RemoveItem(item);
         }
         else

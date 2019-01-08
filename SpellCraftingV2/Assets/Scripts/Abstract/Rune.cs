@@ -6,8 +6,6 @@ using UnityEngine;
 /// Collection Class for all RuneTypes
 /// </summary>
 public abstract class Rune : ItemData {
-
-    [HideInInspector] public LivingEntity Caster;
-    [HideInInspector] public SpellPage Page;
+    
 
 }

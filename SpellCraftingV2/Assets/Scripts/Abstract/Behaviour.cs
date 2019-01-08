@@ -8,6 +8,7 @@ using UnityEngine;
 public abstract class Behaviour : MonoBehaviour {
 
     [HideInInspector] public ScriptableObject data;
+    [HideInInspector] public LivingEntity caster;
     [SerializeField] protected BehaviourAspect.BehaviourType acceptBehaviourType = BehaviourAspect.BehaviourType.PROJECTILE;
 
     /// <summary>

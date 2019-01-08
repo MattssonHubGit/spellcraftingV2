@@ -13,8 +13,7 @@ public abstract class BehaviourModAspect : Aspect
     [SerializeField] protected bool shouldChangeVariables;
     [SerializeField] protected string behaviourScript = "";
 
-
-    [HideInInspector] public MethodRune Rune;
+    
 
     #region GetSetters
     public bool ShouldApplyScript

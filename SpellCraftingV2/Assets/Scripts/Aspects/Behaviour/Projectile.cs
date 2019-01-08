@@ -57,7 +57,7 @@ public class Projectile : Behaviour {
         LivingEntity checkIgnore = col.gameObject.GetComponent<LivingEntity>();
         if (checkIgnore != null) //Is hitting a LivingEntity
         {
-            if (checkIgnore != myData.Caster) //It's not the caster
+            if (checkIgnore != caster) //It's not the caster
             {
                 //BounceHandler(col.gameObject);
                 DestructionHandler();

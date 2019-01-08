@@ -7,7 +7,7 @@ public class RiteCrafting : MonoBehaviour {
     public InventorySlot costSlot;
     public InventorySlot activationSlot;
     public InventorySlot runeOutputSlot;
-    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private GameObject runePrefab;
 
     public Sprite riteSprite;
 
@@ -35,19 +35,21 @@ public class RiteCrafting : MonoBehaviour {
         {
             //Generate new rite rune data
             RiteRune _data = new RiteRune();
-            _data.Cost = costSlot.myItem.myItemData as CostAspect;
-            _data.Activasion = activationSlot.myItem.myItemData as ActivasionAspect;
             _data.inventoryIcon = riteSprite;
             _data.name = "RiteRune: Unfoldered";
+            _data.Activasion = activationSlot.myItem.myItemData as ActivasionAspect;
+            _data.Cost = costSlot.myItem.myItemData as CostAspect;
 
             //Generate item
-            GameObject _itemObj = Instantiate(itemPrefab, new Vector3(100000, 100000, 100000), Quaternion.identity);
+            GameObject _itemObj = Instantiate(runePrefab, new Vector3(100000, 100000, 100000), Quaternion.identity);
             _itemObj.name = "RiteRune";
-            Item _output = _itemObj.GetComponent<Item>();
+            InWorldRune _output = _itemObj.GetComponent<InWorldRune>();
             _output.myItemData = _data;
             _output.isInPlayerInventory = false;
             _output.GFXParent.gameObject.SetActive(false);
             _output.myCollider.enabled = false;
+            _output.Cost = costSlot.myItem.myItemData as CostAspect;
+            _output.Activasion = activationSlot.myItem.myItemData as ActivasionAspect;
 
             //Put it into UI
             runeOutputSlot.myItem = _output;

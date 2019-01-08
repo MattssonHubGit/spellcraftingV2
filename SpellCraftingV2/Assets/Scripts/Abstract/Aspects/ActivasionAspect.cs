@@ -5,25 +5,23 @@ using UnityEngine;
 public abstract class ActivasionAspect : Aspect
 {
     //TODO:  Replace FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerInventory with a reference
-
-
-    [HideInInspector] public RiteRune Rune;
+    
 
     /// <summary>
     /// Check against the cost aspect if the caster succeeds with the payment, if it returns true - enter Cast, else enter Cancel.
     /// </summary>
     /// <param name="cost"></param>
-    public abstract void Aim(CostAspect cost);
+    public abstract void Aim(CostAspect cost, LivingEntity caster, InWorldPage page);
 
     /// <summary>
     /// A successfully paid cost is cast, creating a Core Object and applying all Mods and Behaivour Aspects to it
     /// </summary>
-    protected abstract void Cast();
+    protected abstract void Cast(LivingEntity caster, InWorldPage page);
 
     /// <summary>
     /// A unsuccessful attempt to pay the cost results in a canceld aimed.
     /// </summary>
-    protected abstract void Cancel();
+    protected abstract void Cancel(LivingEntity caster);
 
     /// <summary>
     /// Greate the Core object and apply Methods to it, retuned object has .enabled == false.
@@ -31,40 +29,44 @@ public abstract class ActivasionAspect : Aspect
     /// <param name="core"></param>
     /// <param name="method"></param>
     /// <returns></returns>
-    protected virtual GameObject GenerateCoreObject(/*CoreRune core, MethodRune method*/)
+    protected virtual GameObject GenerateCoreObject(LivingEntity caster, InWorldPage page)
     {
         //Create object and supply with data
-        GameObject coreObject = Instantiate(Rune.Page.Core.SpellObject.ObjectPrefab, new Vector3(-5000f, -5000f, -5000f), Quaternion.identity);
-        Rune.Page.Core.SpellObject.SetInnateEffectAndData(coreObject);
+        GameObject coreObject = Instantiate(page.Core.SpellObject.ObjectPrefab, new Vector3(-5000f, -5000f, -5000f), Quaternion.identity);
+        page.Core.SpellObject.SetInnateEffectAndData(coreObject);
 
         //Apply CoreMods
-        for (int i = 0; i < Rune.Page.Core.Modifiers.Count; i++)
+        for (int i = 0; i < page.Core.Modifiers.Count; i++)
         {
-            Rune.Page.Core.Modifiers[i].SetModEffectAndData(coreObject);
+            page.Core.Modifiers[i].SetModEffectAndData(coreObject);
         }
 
         //Add behaviour
-        Rune.Page.Method.Behaviour.SetBehaviourAndData(coreObject);
+        page.Method.Behaviour.SetBehaviourAndData(coreObject);
 
         //Mod behaviour
-        for (int i = 0; i < Rune.Page.Method.Modifiers.Count; i++)
+        for (int i = 0; i < page.Method.Modifiers.Count; i++)
         {
-            if (Rune.Page.Method.Modifiers[i].ShouldApplyScript) //Should the mod apply a new script to the object?
+            if (page.Method.Modifiers[i].ShouldApplyScript) //Should the mod apply a new script to the object?
             {
-                Rune.Page.Method.Modifiers[i].SetModBehaviourAndData(coreObject);
+                page.Method.Modifiers[i].SetModBehaviourAndData(coreObject);
             }
 
-            if (Rune.Page.Method.Modifiers[i].ShouldChangeVariables) //Should the mod change variables in the behaviour?
+            if (page.Method.Modifiers[i].ShouldChangeVariables) //Should the mod change variables in the behaviour?
             {
                 Behaviour _behaivourToMod = coreObject.GetComponent<Behaviour>();
-                if (_behaivourToMod.AcceptModOfType(Rune.Page.Method.Modifiers[i].ModForType)) //Does the behaviour accept this mod?
+                if (_behaivourToMod.AcceptModOfType(page.Method.Modifiers[i].ModForType)) //Does the behaviour accept this mod?
                 {
-                    _behaivourToMod.ModMyVariables(Rune.Page.Method.Modifiers[i]);
+                    _behaivourToMod.ModMyVariables(page.Method.Modifiers[i]);
                 }
             }
 
 
         }
+
+        //Add tracker and set owner
+        coreObject.AddComponent<ObjectOwnerTracker>().UpdateOwner(caster);
+
 
         //return it false to make it easier to reposition/set-up
         coreObject.SetActive(false);

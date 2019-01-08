@@ -9,8 +9,7 @@ public abstract class CoreModAspect : Aspect
     [SerializeField] protected string effectScript = "";
     [SerializeField] private ScriptableObject effectData;
 
-
-    [HideInInspector] public CoreRune Rune;
+    
 
     public virtual void SetModEffectAndData(GameObject applyTo)
     {
@@ -27,7 +26,6 @@ public abstract class CoreModAspect : Aspect
                 //Add the class and set it's data to a subclass of BehaviourModAspect
                 InnateEffect thisEffect = (InnateEffect)applyTo.AddComponent(mType);
                 thisEffect.data = effectData;
-                thisEffect.caster = Caster;
 
             }
             else

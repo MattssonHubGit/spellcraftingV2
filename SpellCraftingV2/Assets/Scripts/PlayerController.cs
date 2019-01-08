@@ -30,6 +30,10 @@ public class PlayerController : LivingEntity
     private KnockbackReceiver kbr;
     #endregion
 
+    #region SpellBook
+    [SerializeField] private SpellBook myBook;
+    #endregion
+
     #region Inventory
     [Header("Inventory")]
     [SerializeField] private InventoryManager playerInventory;
@@ -39,7 +43,7 @@ public class PlayerController : LivingEntity
     #region Debugging
     [Header("Debugging")]
     [SerializeField] private bool debugMode = false;
-    [SerializeField] public SpellPage mySpell;
+    //[SerializeField] public SpellPage mySpell;
     #endregion
 
     #region GetSetter
@@ -257,7 +261,7 @@ public class PlayerController : LivingEntity
 
         if (Input.GetMouseButtonDown(0))
         {
-            mySpell.CastSpell((LivingEntity)this);
+            myBook.Spell.Page.CastSpell((LivingEntity)this, myBook.Spell);
         }
 
     }

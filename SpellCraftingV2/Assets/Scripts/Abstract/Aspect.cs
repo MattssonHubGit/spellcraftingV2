@@ -6,7 +6,6 @@ using UnityEngine;
 /// Collection Class for all Aspect types
 /// </summary>
 public abstract class Aspect : ItemData {
-
-    public LivingEntity Caster;
+    
 	
 }

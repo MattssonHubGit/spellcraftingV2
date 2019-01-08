@@ -11,8 +11,7 @@ public abstract class CostAspect : Aspect
     [SerializeField] protected LivingEntity.ResourceType costType;
     [SerializeField] protected int costAmount;
 
-
-    [HideInInspector] public RiteRune Rune;
+    
 
     /// <summary>
     /// Return true and deduct pay from user if possible, otherwise return false.
